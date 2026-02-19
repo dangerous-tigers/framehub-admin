@@ -1,0 +1,115 @@
+@use 'reset';
+@use 'typography';
+@use 'sizes';
+
+:root {
+  --primary-100: #73a5ff;
+  --primary-300: #4c8dff;
+  --primary-500: #397df6;
+  --primary-700: #2f68cc;
+  --primary-900: #234e99;
+  --primary-900-rgb: 26, 35, 126;
+  --danger-100: #ff8099;
+  --danger-300: #f23d61;
+  --danger-500: #cc1439;
+  --danger-700: #990f2b;
+  --danger-900: #660a1d;
+  --warning-100: #ffd073;
+  --warning-300: #e5ac39;
+  --warning-500: #d99000;
+  --warning-700: #960;
+  --warning-900: #640;
+  --success-100: #80ffbf;
+  --success-300: #22e584;
+  --success-500: #14cc70;
+  --success-700: #0f9954;
+  --success-900: #0a6638;
+  --light-100: #fff;
+  --light-300: #f7fbff;
+  --light-500: #edf3fa;
+  --light-700: #d5dae0;
+  --light-900: #8d9094;
+  --dark-100: #4c4c4c;
+  --dark-300: #333;
+  --dark-500: #171717;
+  --dark-500-rgb: 23, 23, 23;
+  --dark-700: #0d0d0d;
+  --dark-900: #000;
+}
+
+body {
+  color: var(--light-100);
+  background-color: var(--dark-700);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--font-inter), sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  column-gap: 24px;
+
+  //  min-height: 100vh;
+}
+
+.container {
+  max-width: 1188px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.mainBox {
+  flex: 1 1 auto;
+  height: 100%;
+  width: 100%;
+  max-width: 1188px;
+  margin: 82px auto 0;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.mainBoxBody {
+  flex: 1 1 auto;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 156px 1fr;
+  gap: 24px;
+  max-width: 1188px;
+
+  @media (width <= 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+    flex: 1 1 auto;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+
+.main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+
+  @media (width <= 768px) {
+    flex: 1 1 auto;
+  }
+}
+
+header {
+  flex: 0 1 60px;
+}
+
+@media (width <= 768px) {
+  aside + div {
+    flex: 1 1 auto;
+  }
+}

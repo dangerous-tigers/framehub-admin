@@ -7,15 +7,24 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "rename-icons": "node scripts/rename-icons.cjs",
+    "generate-icons": "pnpm run rename-icons && npx @svgr/cli --icon --out-dir ./../../src/assets/icons/components --jsx-runtime automatic --typescript --ref --memo --replace-attr-values \"#000=currentcolor\"  --replace-attr-values \"#fff=currentcolor\" -- ./../src/assets/icons/svg && node ./../../../scripts/replace-color.cjs",
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@apollo/client": "^4.1.4",
     "@apollo/client-integration-nextjs": "^0.14.4",
+    "clsx": "^2.1.1",
     "graphql": "^16.12.0",
     "next": "16.1.6",
+    "next-intl": "^4.8.3",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "sass": "^1.97.3",
+    "stylelint": "^17.3.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-prettier": "^5.0.3",
+    "stylelint-scss": "^7.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
