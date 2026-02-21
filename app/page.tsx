@@ -1,21 +1,13 @@
 "use client";
 
-import { apolloClient } from "shared/lib/apolloClient";
-
-import { ApolloProvider } from "@apollo/client/react";
+import { ReactNode } from "react";
 
 import styles from "./page.module.css";
 
-import { Example } from "Example";
-
-export default function Home() {
+export default function Home({ children }: { children: ReactNode }) {
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <ApolloProvider client={apolloClient}>
-          <Example />
-        </ApolloProvider>
-      </main>
+      <main className={styles.main}>{children}</main>
     </div>
   );
 }
