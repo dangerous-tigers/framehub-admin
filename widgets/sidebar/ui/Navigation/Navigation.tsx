@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
 import { navigationItems } from "@/widgets/sidebar/model/navigation";
-import { PolymorphicButton } from "@ST4RFKR/ui-kit/components";
+import { PolymorphicButton } from "@dangerous-tigers/framehub-ui-kit/components";
 
 import s from "./navigation.module.scss";
 
