@@ -1,7 +1,7 @@
 export const ROUTES = {
-  USERS_LIST: "users-list",
-  PAYMENTS_LIST: "payments-list",
-  POSTS_LIST: "posts-list",
+  USERS: "users",
+  PAYMENTS: "payments",
+  POSTS: "posts",
   STATISTICS: "statistics",
   EMPTY: "",
 } as const;

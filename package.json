@@ -12,6 +12,7 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "@ST4RFKR/ui-kit": "1.0.3",
     "@apollo/client": "^4.1.4",
     "@apollo/client-integration-nextjs": "^0.14.4",
     "clsx": "^2.1.1",
