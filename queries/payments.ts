@@ -6,12 +6,14 @@ export const GET_PAYMENTS = gql`
     $pageNumber: Int!
     $sortBy: String!
     $sortDirection: SortDirection
+    $searchTerm: String
   ) {
     getPayments(
       pageSize: $pageSize
       pageNumber: $pageNumber
       sortBy: $sortBy
       sortDirection: $sortDirection
+      searchTerm: $searchTerm
     ) {
       pagesCount
       page
@@ -23,7 +25,11 @@ export const GET_PAYMENTS = gql`
         amount
         currency
         createdAt
+        type
         paymentMethod
+        avatars {
+          url
+        }
       }
     }
   }

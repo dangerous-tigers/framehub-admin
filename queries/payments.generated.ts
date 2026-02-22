@@ -5,6 +5,7 @@ export type GetPaymentsQueryVariables = Types.Exact<{
   pageNumber: Types.Scalars["Int"]["input"];
   sortBy: Types.Scalars["String"]["input"];
   sortDirection?: Types.InputMaybe<Types.SortDirection>;
+  searchTerm?: Types.InputMaybe<Types.Scalars["String"]["input"]>;
 }>;
 
 export type GetPaymentsQuery = {
@@ -19,9 +20,11 @@ export type GetPaymentsQuery = {
       id: number | null;
       userName: string;
       amount: number | null;
-      currency: Types.CurrencyType | null;
-      createdAt: unknown | null;
+      currency: Types.CurrencyType;
+      createdAt: string | undefined;
+      type: Types.SubscriptionType;
       paymentMethod: Types.PaymentMethod;
+      avatars: Array<{ __typename: "Avatar"; url: string | undefined }>;
     }>;
   };
 };

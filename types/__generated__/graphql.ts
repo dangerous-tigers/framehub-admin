@@ -147,6 +147,7 @@ export type PaymentsPaginationModel = {
   pageSize: Scalars["Int"]["output"];
   pagesCount: Scalars["Int"]["output"];
   totalCount: Scalars["Int"]["output"];
+  searchTerm?: Scalars["String"]["input"];
 };
 
 export type Post = {

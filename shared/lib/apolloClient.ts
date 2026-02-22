@@ -16,5 +16,15 @@ const authMiddleware = new SetContextLink(({ headers }) => {
 
 export const apolloClient = new ApolloClient({
   link: authMiddleware.concat(httpLink),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          getPayments: {
+            keyArgs: ["payments"],
+          },
+        },
+      },
+    },
+  }),
 });
