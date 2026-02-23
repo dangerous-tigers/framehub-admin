@@ -1,4 +1,4 @@
-import * as Types from "../types/__generated__/graphql";
+import * as Types from "../generated/graphql";
 
 export type GetPaymentsQueryVariables = Types.Exact<{
   pageSize: Types.Scalars["Int"]["input"];
@@ -20,11 +20,11 @@ export type GetPaymentsQuery = {
       id: number | null;
       userName: string;
       amount: number | null;
-      currency: Types.CurrencyType;
-      createdAt: string | undefined;
+      currency: Types.CurrencyType | null;
+      createdAt: string | null;
       type: Types.SubscriptionType;
       paymentMethod: Types.PaymentMethod;
-      avatars: Array<{ __typename: "Avatar"; url: string | undefined }>;
+      avatars: Array<{ __typename: "Avatar"; url: string | null }> | null;
     }>;
   };
 };

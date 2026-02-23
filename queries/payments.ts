@@ -1,6 +1,14 @@
-import { gql } from "@apollo/client";
+import { gql, TypedDocumentNode } from "@apollo/client";
 
-export const GET_PAYMENTS = gql`
+import {
+  GetPaymentsQuery,
+  GetPaymentsQueryVariables,
+} from "./payments.generated";
+
+export const GET_PAYMENTS: TypedDocumentNode<
+  GetPaymentsQuery,
+  GetPaymentsQueryVariables
+> = gql`
   query getPayments(
     $pageSize: Int!
     $pageNumber: Int!

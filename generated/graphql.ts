@@ -25,7 +25,7 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean };
   Int: { input: number; output: number };
   Float: { input: number; output: number };
-  DateTime: { input: string; output: string };
+  DateTime: { input: any; output: any };
 };
 
 export type Avatar = {
@@ -36,12 +36,10 @@ export type Avatar = {
   width?: Maybe<Scalars["Int"]["output"]>;
 };
 
-export const CURRENCY = {
-  EUR: "EUR",
-  USD: "USD",
-} as const;
-
-export type CurrencyType = (typeof CURRENCY)[keyof typeof CURRENCY];
+export enum CurrencyType {
+  Eur = "EUR",
+  Usd = "USD",
+}
 
 export type Follow = {
   __typename?: "Follow";
@@ -123,13 +121,11 @@ export type Payment = {
   userId?: Maybe<Scalars["Int"]["output"]>;
 };
 
-export const PAYMENT_METHOD = {
-  CREDIT_CARD: "CREDIT_CARD",
-  PAYPAL: "PAYPAL",
-  STRIPE: "STRIPE",
-} as const;
-export type PaymentMethod =
-  (typeof PAYMENT_METHOD)[keyof typeof PAYMENT_METHOD];
+export enum PaymentMethod {
+  CreditCard = "CREDIT_CARD",
+  Paypal = "PAYPAL",
+  Stripe = "STRIPE",
+}
 
 export type PaymentPaginationModel = {
   __typename?: "PaymentPaginationModel";
@@ -147,7 +143,6 @@ export type PaymentsPaginationModel = {
   pageSize: Scalars["Int"]["output"];
   pagesCount: Scalars["Int"]["output"];
   totalCount: Scalars["Int"]["output"];
-  searchTerm?: Scalars["String"]["input"];
 };
 
 export type Post = {
@@ -272,22 +267,17 @@ export type QueryGetUsersArgs = {
   statusFilter?: InputMaybe<UserBlockStatus>;
 };
 
-export const SORT_DIRECTION = {
-  ASC: "asc",
-  DESC: "desc",
-} as const;
-export type SortDirection =
-  (typeof SORT_DIRECTION)[keyof typeof SORT_DIRECTION];
+export enum SortDirection {
+  Asc = "asc",
+  Desc = "desc",
+}
 
-export const STATUS_SUBSCRIPTION = {
-  ACTIVE: "ACTIVE",
-  DELETED: "DELETED",
-  FINISHED: "FINISHED",
-  PENDING: "PENDING",
-} as const;
-
-export type StatusSubscriptionType =
-  (typeof STATUS_SUBSCRIPTION)[keyof typeof STATUS_SUBSCRIPTION];
+export enum StatusSubscriptionType {
+  Active = "ACTIVE",
+  Deleted = "DELETED",
+  Finished = "FINISHED",
+  Pending = "PENDING",
+}
 
 export type Subscription = {
   __typename?: "Subscription";
@@ -322,13 +312,11 @@ export type SubscriptionPaymentsModel = {
   userName: Scalars["String"]["output"];
 };
 
-export const SUBSCRIPTION = {
-  DAY: "DAY",
-  MONTHLY: "MONTHLY",
-  WEEKLY: "WEEKLY",
-} as const;
-
-export type SubscriptionType = (typeof SUBSCRIPTION)[keyof typeof SUBSCRIPTION];
+export enum SubscriptionType {
+  Day = "DAY",
+  Monthly = "MONTHLY",
+  Weekly = "WEEKLY",
+}
 
 export type User = {
   __typename?: "User";
@@ -346,14 +334,11 @@ export type UserBan = {
   reason: Scalars["String"]["output"];
 };
 
-export const USER_BLOCK_STATUS = {
-  ALL: "ALL",
-  BLOCKED: "BLOCKED",
-  UNBLOCKED: "UNBLOCKED",
-} as const;
-
-export type UserBlockStatus =
-  (typeof USER_BLOCK_STATUS)[keyof typeof USER_BLOCK_STATUS];
+export enum UserBlockStatus {
+  All = "ALL",
+  Blocked = "BLOCKED",
+  Unblocked = "UNBLOCKED",
+}
 
 export type UsersPaginationModel = {
   __typename?: "UsersPaginationModel";
