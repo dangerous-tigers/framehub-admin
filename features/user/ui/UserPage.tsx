@@ -12,7 +12,9 @@ import { Tabs } from "@dangerous-tigers/framehub-ui-kit/components";
 import s from "./UserPage.module.scss";
 
 export function UserPage({ id }: { id: string }) {
-  const { USER_TABS, handleTabChange, activeTab } = useUserTabs();
+  const { USER_TABS, handleTabChange, activeTab } = useUserTabs({
+    userId: +id,
+  });
 
   const { data } = useQuery<{ getUser: User }, QueryGetUserArgs>(GET_USER, {
     variables: { userId: +id },
@@ -24,7 +26,11 @@ export function UserPage({ id }: { id: string }) {
 
   return (
     <div>
-      <Back label="Back to Users List" path={ROUTES.USERS} className={s.back} />
+      <Back
+        label="Back to Users List"
+        path={"/" + ROUTES.USERS}
+        className={s.back}
+      />
       <div>
         <UserInfo user={data?.getUser} className={s.userInfo} />
         <Tabs

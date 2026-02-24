@@ -2,12 +2,14 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 
-export function useUserTabs() {
+import { UploadedPhotos } from "../ui/tabsContent/uploadedPhotos/ui/UploadedPhotos";
+
+export function useUserTabs({ userId }: { userId: number }) {
   const USER_TABS = [
     {
       value: "photos",
       label: "Uploaded photos",
-      content: "Tab 1 content",
+      content: <UploadedPhotos userId={userId} />,
     },
     {
       value: "payments",
@@ -28,7 +30,7 @@ export function useUserTabs() {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const activeTab = searchParams.get("tab") || "tab";
+  const activeTab = searchParams.get("tab") || "photos";
 
   const handleTabChange = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
