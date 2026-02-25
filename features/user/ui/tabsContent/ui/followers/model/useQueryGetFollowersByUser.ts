@@ -1,39 +1,16 @@
-import { useState } from "react";
-
 import { QueryGetFollowersArgs } from "@/types/__generated__/graphql";
 import { useQuery } from "@apollo/client/react";
 
+import { usePaginationState } from "../../../model";
+import { useTableSort } from "../../../model/useTableSort";
 import { GET_FOLLOWERS_BY_USER } from "../api";
 
 import { GetFollowersByUser } from "./types";
 
 export const useQueryGetFollowersByUser = ({ userId }: { userId: number }) => {
-  const [pageSize, setPageSize] = useState(5);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [sortBy, setSortBy] = useState<{
-    field: "createdAt" | "userName";
-    direction: "asc" | "desc";
-  }>({
-    field: "createdAt",
-    direction: "asc",
-  });
-
-  const onPageSizeChange = (value: string) => {
-    const parsedPageSize = Number(value);
-
-    if (Number.isNaN(parsedPageSize)) return;
-
-    setPageSize(parsedPageSize);
-    setCurrentPage(1);
-  };
-
-  const setCurrentPageAndSortBy = (
-    field: "createdAt" | "userName",
-    direction: "asc" | "desc",
-  ) => {
-    setCurrentPage(1);
-    setSortBy({ field, direction });
-  };
+  const { pageSize, onPageSizeChange, currentPage, setCurrentPage } =
+    usePaginationState();
+  const { sortBy, setCurrentPageAndSortBy } = useTableSort(setCurrentPage);
 
   const { data, loading } = useQuery<
     {

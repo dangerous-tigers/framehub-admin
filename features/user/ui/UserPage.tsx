@@ -2,7 +2,7 @@
 
 import { GET_USER } from "@/entities/user/api/getUser.query";
 import { UserInfo } from "@/entities/user/ui/userInfo/UserInfo";
-import { useUserTabs } from "@/features/user/model/useUserTabs";
+import { useUserTabs } from "@/features/user/ui/tabsContent/model/useUserTabs";
 import { ROUTES } from "@/shared/config/routes";
 import { Back } from "@/shared/ui/components";
 import { QueryGetUserArgs, User } from "@/types/__generated__/graphql";

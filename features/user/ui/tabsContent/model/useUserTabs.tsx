@@ -2,9 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { Followers } from "../ui/tabsContent/followers/ui/Followers";
-import { Payment } from "../ui/tabsContent/payments/ui/Payments";
-import { UploadedPhotos } from "../ui/tabsContent/uploadedPhotos/ui/UploadedPhotos";
+import { Followers, Following, Payment, UploadedPhotos } from "../ui";
 
 export function useUserTabs({ userId }: { userId: number }) {
   const USER_TABS = [
@@ -26,7 +24,7 @@ export function useUserTabs({ userId }: { userId: number }) {
     {
       value: "following",
       label: "Following",
-      content: "Tab 4 content",
+      content: <Following userId={userId} />,
     },
   ];
 

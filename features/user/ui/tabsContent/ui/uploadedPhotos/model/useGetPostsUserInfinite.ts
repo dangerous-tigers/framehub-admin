@@ -21,6 +21,7 @@ export function useGetPostsUserInfinite({ userId }: { userId: number }) {
   const lastPostId = items[items.length - 1]?.id ?? null;
 
   const fetchNextPage = useCallback(() => {
+    if (loading) return;
     if (!hasMore || !lastPostId) {
       return;
     }

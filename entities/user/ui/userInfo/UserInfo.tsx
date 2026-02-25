@@ -1,5 +1,6 @@
 import clsx from "clsx";
 
+import { formatDate } from "@/shared/lib";
 import { User } from "@/types/__generated__/graphql";
 import { Avatar } from "@dangerous-tigers/framehub-ui-kit/components";
 
@@ -12,7 +13,7 @@ export function UserInfo({
   user: User;
   className?: string;
 }) {
-  const avatarUrl = user.profile?.avatars?.[0]?.url ?? undefined; // TODO: add default avatar
+  const avatarUrl = user.profile?.avatars?.[0]?.url;
 
   return (
     <div className={clsx(s.root, className)}>
@@ -30,7 +31,7 @@ export function UserInfo({
         </div>
         <div>
           <p className={s.userInfoBottomTitle}>Profile Creation Date: </p>
-          <p>{user.createdAt}</p>
+          <p>{formatDate(user.createdAt)}</p>
         </div>
       </div>
     </div>

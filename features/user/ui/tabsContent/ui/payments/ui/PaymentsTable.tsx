@@ -1,3 +1,4 @@
+import { formatDate, normalizeSubsriptionType } from "@/shared/lib";
 import {
   Skeleton,
   Table,
@@ -8,9 +9,8 @@ import {
   TableRow,
 } from "@dangerous-tigers/framehub-ui-kit/components";
 
+import { NoTableContent } from "../../NoTableContent";
 import { BusinessAccountSubscription, GetPaymentsByUser } from "../model/types";
-
-import s from "./Payments.module.scss";
 
 export function PaymentsTable({
   column,
@@ -26,11 +26,7 @@ export function PaymentsTable({
   className?: string;
 }) {
   if (payments?.items?.length === 0) {
-    return (
-      <div>
-        <p className={s.noContent}>No payments</p>
-      </div>
-    );
+    return <NoTableContent />;
   }
 
   const SKELENON_COLUMN_COUNT = 5;
@@ -57,10 +53,10 @@ export function PaymentsTable({
             ))
           : payments?.items?.map((payment: BusinessAccountSubscription) => (
               <TableRow key={payment.id}>
-                <TableCell>{payment.dateOfPayment}</TableCell>
-                <TableCell>{payment.endDate}</TableCell>
-                <TableCell>{payment.price}</TableCell>
-                <TableCell>{payment.type}</TableCell>
+                <TableCell>{formatDate(payment.dateOfPayment)}</TableCell>
+                <TableCell>{formatDate(payment.endDate)}</TableCell>
+                <TableCell>$ {payment.price}</TableCell>
+                <TableCell>{normalizeSubsriptionType(payment.type)}</TableCell>
                 <TableCell>{payment.paymentType}</TableCell>
               </TableRow>
             ))}
