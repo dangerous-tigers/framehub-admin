@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 
+import { Followers } from "../ui/tabsContent/followers/ui/Followers";
 import { Payment } from "../ui/tabsContent/payments/ui/Payments";
 import { UploadedPhotos } from "../ui/tabsContent/uploadedPhotos/ui/UploadedPhotos";
 
@@ -20,7 +21,7 @@ export function useUserTabs({ userId }: { userId: number }) {
     {
       value: "followers",
       label: "Followers",
-      content: "Tab 3 content",
+      content: <Followers userId={userId} />,
     },
     {
       value: "following",

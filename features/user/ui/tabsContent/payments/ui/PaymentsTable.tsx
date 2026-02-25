@@ -10,6 +10,8 @@ import {
 
 import { BusinessAccountSubscription, GetPaymentsByUser } from "../model/types";
 
+import s from "./Payments.module.scss";
+
 export function PaymentsTable({
   column,
   payments,
@@ -25,8 +27,8 @@ export function PaymentsTable({
 }) {
   if (payments?.items?.length === 0) {
     return (
-      <div className="flex justify-center items-center h-full">
-        <p className="text-2xl">No payments</p>
+      <div>
+        <p className={s.noContent}>No payments</p>
       </div>
     );
   }

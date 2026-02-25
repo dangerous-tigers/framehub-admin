@@ -25,13 +25,15 @@ export function Payment({ userId }: { userId: number }) {
         loading={loading}
         pageSize={pageSize}
       />
-      <Pagination
-        totalPages={data?.getPaymentsByUser.pagesCount ?? 0}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-        pageSize={pageSize.toString()}
-        onPageSizeChange={onPageSizeChange}
-      />
+      {data?.getPaymentsByUser?.items.length !== 0 && (
+        <Pagination
+          totalPages={data?.getPaymentsByUser.pagesCount ?? 0}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+          pageSize={pageSize.toString()}
+          onPageSizeChange={onPageSizeChange}
+        />
+      )}
     </div>
   );
 }

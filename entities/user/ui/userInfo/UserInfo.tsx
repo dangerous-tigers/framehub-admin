@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
-import { Avatar } from "@/shared/ui/components";
 import { User } from "@/types/__generated__/graphql";
+import { Avatar } from "@dangerous-tigers/framehub-ui-kit/components";
 
 import s from "./UserInfo.module.scss";
 
@@ -17,7 +17,7 @@ export function UserInfo({
   return (
     <div className={clsx(s.root, className)}>
       <div className={s.userInfoTop}>
-        <Avatar url={avatarUrl} />
+        <Avatar url={avatarUrl} size="l" />
         <div className={s.info}>
           <p className={s.infoName}>{user.userName}</p>
           <p className={s.infoEmail}>{user.email}</p>
