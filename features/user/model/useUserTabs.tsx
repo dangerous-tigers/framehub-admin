@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 
+import { Payment } from "../ui/tabsContent/payments/ui/Payments";
 import { UploadedPhotos } from "../ui/tabsContent/uploadedPhotos/ui/UploadedPhotos";
 
 export function useUserTabs({ userId }: { userId: number }) {
@@ -14,7 +15,7 @@ export function useUserTabs({ userId }: { userId: number }) {
     {
       value: "payments",
       label: "Payments",
-      content: "Tab 2 content",
+      content: <Payment userId={userId} />,
     },
     {
       value: "followers",
