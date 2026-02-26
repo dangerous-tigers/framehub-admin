@@ -61,16 +61,38 @@ border-bottom-right-radius: 2px;
     justify-content: center;
     padding: 5px;
   }
-
-    .userName {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 12px
-    }
 }
 
 .pagination {
   margin-top: auto;
   padding-top: 36px;
+}
+
+// 
+.headColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  & > button {
+    padding: 0;
+  }
+}
+.userName {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 12px
+        }
+
+.desc {
+  svg path:last-child {
+    fill: var(--light-100);
+  }
+}
+.asc {
+  svg path:first-child {
+    fill: var(--light-100);
+  }
 }
