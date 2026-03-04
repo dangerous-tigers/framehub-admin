@@ -117,47 +117,117 @@ header {
 // Login page styles
 .login-page {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: var(--dark-700);
+  background-color: var(--dark-900);
+  padding: 20px;
+}
+
+.login-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--dark-500);
+}
+
+.login-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--light-100);
+}
+
+.logo-subtext {
+  font-size: 14px;
+  color: var(--light-700);
 }
 
 .login-card {
   width: 100%;
   max-width: 400px;
-  padding: 24px;
+  padding: 32px;
   background-color: var(--dark-500);
   border-radius: 8px;
+  border: 1px solid var(--dark-300);
 }
 
 .login-title {
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
   color: var(--light-100);
   text-align: center;
+  margin: 0 0 24px 0;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
-.form-group {
+.form-field {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.form-label {
+  font-size: 14px;
+  color: var(--light-300);
+  font-weight: 500;
+}
+
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  color: var(--light-700);
+
+  &:hover {
+    color: var(--light-100);
+  }
 }
 
 .error-message {
   color: var(--danger-300);
   font-size: 14px;
   text-align: center;
+  background-color: rgba(242, 61, 97, 0.1);
+  padding: 12px;
+  border-radius: 4px;
 }
 
 .submit-button {
   width: 100%;
+  background-color: var(--primary-500);
+  
+  &:hover:not(:disabled) {
+    background-color: var(--primary-700);
+  }
 }
 
 // Users page styles
