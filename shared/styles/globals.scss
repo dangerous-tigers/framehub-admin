@@ -113,3 +113,131 @@ header {
     flex: 1 1 auto;
   }
 }
+
+// Login page styles
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--dark-700);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  background-color: var(--dark-500);
+  border-radius: 8px;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--light-100);
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.error-message {
+  color: var(--danger-300);
+  font-size: 14px;
+  text-align: center;
+}
+
+.submit-button {
+  width: 100%;
+}
+
+// Users page styles
+.users-page {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.users-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.users-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--light-100);
+  margin: 0;
+}
+
+.users-controls {
+  display: flex;
+  gap: 16px;
+}
+
+.users-table {
+  background-color: var(--dark-500);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.user-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-weight: 500;
+  color: var(--light-100);
+}
+
+.status-banned {
+  color: var(--danger-300);
+  font-weight: 500;
+}
+
+.status-active {
+  color: var(--success-300);
+  font-weight: 500;
+}
+
+.loading-cell,
+.empty-cell {
+  text-align: center;
+  padding: 40px !important;
+  color: var(--light-700);
+}
+
+.users-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 16px;
+}
+
+.pagination-info {
+  color: var(--light-300);
+  font-size: 14px;
+}
