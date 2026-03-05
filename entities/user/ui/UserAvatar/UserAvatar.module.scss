@@ -1,0 +1,23 @@
+// =============================================
+// UserAvatar Styles
+// =============================================
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--color-dark-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--placeholder {
+    background-color: var(--color-primary-700);
+  }
+
+  &__placeholder {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-light-100);
+    text-transform: uppercase;
+  }
+}

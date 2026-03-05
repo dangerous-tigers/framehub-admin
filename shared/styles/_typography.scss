@@ -1,14 +1,59 @@
-:root {
-  /* line heights */
-  --line-height-s: 16px;
-  --line-height-m: 24px;
-  --line-height-l: 36px;
+// =============================================
+// Typography Styles
+// =============================================
 
-  /* font sizes */
-  --font-size-xs: 0.75rem; /* 12px */
-  --font-size-s: 0.875rem; /* 14px */
-  --font-size-m: 1rem; /* 16px */
-  --font-size-l: 1.125rem; /* 18px */
-  --font-size-xl: 1.25rem; /* 20px */
-  --font-size-xxl: 1.625rem; /* 26px */
+// Headings
+.heading-1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.heading-2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+}
+
+.heading-3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+}
+
+// Body Text
+.body-large {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+.body {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+.body-small {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+// Caption
+.caption {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-light-700);
+}
+
+// Links
+.link {
+  color: var(--color-primary-300);
+  text-decoration: underline;
+  
+  &:hover {
+    color: var(--color-primary-500);
+  }
 }

@@ -1,33 +1,24 @@
+// =============================================
+// AppShell - Layout Wrapper
+// =============================================
+
 "use client";
 
-import { ReactNode, useState } from "react";
-import clsx from "clsx";
+import { ReactNode } from "react";
 
-import { LOGIN_ADMIN } from "@/queries/login";
-import { LoginAdminMutation } from "@/queries/login.generated";
 import { Sidebar } from "@/widgets/sidebar";
-import { useMutation } from "@apollo/client/react";
 
-export function AppShell({ children }: { children: ReactNode }) {
-  const [loginMutation] = useMutation<LoginAdminMutation>(LOGIN_ADMIN, {
-    variables: { email: "admin@gmail.com", password: "admin" },
-  });
-  const [isAuth, setIsAuth] = useState(false);
+interface AppShellProps {
+  children: ReactNode;
+  isAuthenticated?: boolean;
+}
 
-  const handleLogin = async () => {
-    const { data } = await loginMutation({});
-
-    if (data?.loginAdmin.logged) {
-      setIsAuth(true);
-    }
-  };
-
+export function AppShell({ children, isAuthenticated = false }: AppShellProps) {
   return (
     <div className="mainBox">
       <main className="main">
-        <div className={clsx({ ["mainBoxBody"]: isAuth })}>
-          <button onClick={handleLogin}>LOGIN</button>
-          {isAuth && <Sidebar />}
+        <div className="mainBoxBody">
+          {isAuthenticated && <Sidebar />}
           {children}
         </div>
       </main>

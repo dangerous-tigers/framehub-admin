@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import type { ReactNode } from "react";
-import { Header } from "widgets/header/ui/Header";
 
 import { AppProviders } from "./provider";
 
@@ -24,13 +23,8 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <AppProviders>
-          <div className="wrapper">
-            <Header />
-            {children}
-          </div>
-        </AppProviders>
+      <body className={inter.variable}>
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );

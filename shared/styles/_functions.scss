@@ -1,0 +1,20 @@
+// =============================================
+// SCSS Functions
+// =============================================
+
+@use 'sass:math';
+
+// Convert px to rem
+@function to-rem($px, $base: 16) {
+  @return math.div($px, $base) * 1rem;
+}
+
+// Calculate percentage
+@function percentage($part, $total) {
+  @return math.div($part, $total) * 100%;
+}
+
+// Generate spacing value
+@function spacing($multiplier: 1) {
+  @return $multiplier * 4px;
+}

@@ -1,76 +1,30 @@
-@use 'reset';
-@use 'typography';
-@use 'sizes';
+// =============================================
+// Global Styles - Entry Point
+// =============================================
 
-:root {
-  --primary-100: #73a5ff;
-  --primary-300: #4c8dff;
-  --primary-500: #397df6;
-  --primary-700: #2f68cc;
-  --primary-900: #234e99;
-  --primary-900-rgb: 26, 35, 126;
-  --danger-100: #ff8099;
-  --danger-300: #f23d61;
-  --danger-500: #cc1439;
-  --danger-700: #990f2b;
-  --danger-900: #660a1d;
-  --warning-100: #ffd073;
-  --warning-300: #e5ac39;
-  --warning-500: #d99000;
-  --warning-700: #960;
-  --warning-900: #640;
-  --success-100: #80ffbf;
-  --success-300: #22e584;
-  --success-500: #14cc70;
-  --success-700: #0f9954;
-  --success-900: #0a6638;
-  --light-100: #fff;
-  --light-300: #f7fbff;
-  --light-500: #edf3fa;
-  --light-700: #d5dae0;
-  --light-900: #8d9094;
-  --dark-100: #4c4c4c;
-  --dark-300: #333;
-  --dark-500: #171717;
-  --dark-500-rgb: 23, 23, 23;
-  --dark-700: #0d0d0d;
-  --dark-900: #000;
-}
+// FSD Shared Styles
+@use 'index';
 
-body {
-  color: var(--light-100);
-  background-color: var(--dark-700);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-html,
-body {
-  height: 100%;
-  font-family: var(--font-inter), sans-serif;
-}
-
+// Layout Styles
 .wrapper {
   display: flex;
   flex-direction: column;
-  column-gap: 24px;
-
-  //  min-height: 100vh;
+  column-gap: var(--spacing-lg);
 }
 
 .container {
-  max-width: 1188px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 var(--spacing-md);
 }
 
 .mainBox {
   flex: 1 1 auto;
   height: 100%;
   width: 100%;
-  max-width: 1188px;
+  max-width: var(--container-max-width);
   margin: 82px auto 0;
-  padding: 0 16px;
+  padding: 0 var(--spacing-md);
   display: flex;
   flex-direction: column;
   min-height: 100%;
@@ -80,9 +34,9 @@ body {
   flex: 1 1 auto;
   height: 100%;
   display: grid;
-  grid-template-columns: 156px 1fr;
-  gap: 24px;
-  max-width: 1188px;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  gap: var(--spacing-lg);
+  max-width: var(--container-max-width);
 
   @media (width <= 768px) {
     display: flex;
@@ -105,209 +59,11 @@ body {
 }
 
 header {
-  flex: 0 1 60px;
+  flex: 0 1 var(--header-height);
 }
 
 @media (width <= 768px) {
   aside + div {
     flex: 1 1 auto;
   }
-}
-
-// Login page styles
-.login-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: var(--dark-900);
-  padding: 20px;
-}
-
-.login-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 20px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--dark-500);
-}
-
-.login-logo {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-
-.logo-text {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--light-100);
-}
-
-.logo-subtext {
-  font-size: 14px;
-  color: var(--light-700);
-}
-
-.login-card {
-  width: 100%;
-  max-width: 400px;
-  padding: 32px;
-  background-color: var(--dark-500);
-  border-radius: 8px;
-  border: 1px solid var(--dark-300);
-}
-
-.login-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--light-100);
-  text-align: center;
-  margin: 0 0 24px 0;
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-label {
-  font-size: 14px;
-  color: var(--light-300);
-  font-weight: 500;
-}
-
-.password-input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.password-toggle {
-  position: absolute;
-  right: 12px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px;
-  color: var(--light-700);
-
-  &:hover {
-    color: var(--light-100);
-  }
-}
-
-.error-message {
-  color: var(--danger-300);
-  font-size: 14px;
-  text-align: center;
-  background-color: rgba(242, 61, 97, 0.1);
-  padding: 12px;
-  border-radius: 4px;
-}
-
-.submit-button {
-  width: 100%;
-  background-color: var(--primary-500);
-  
-  &:hover:not(:disabled) {
-    background-color: var(--primary-700);
-  }
-}
-
-// Users page styles
-.users-page {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.users-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.users-title {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--light-100);
-  margin: 0;
-}
-
-.users-controls {
-  display: flex;
-  gap: 16px;
-}
-
-.users-table {
-  background-color: var(--dark-500);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.user-cell {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.user-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.user-name {
-  font-weight: 500;
-  color: var(--light-100);
-}
-
-.status-banned {
-  color: var(--danger-300);
-  font-weight: 500;
-}
-
-.status-active {
-  color: var(--success-300);
-  font-weight: 500;
-}
-
-.loading-cell,
-.empty-cell {
-  text-align: center;
-  padding: 40px !important;
-  color: var(--light-700);
-}
-
-.users-pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  padding: 16px;
-}
-
-.pagination-info {
-  color: var(--light-300);
-  font-size: 14px;
 }

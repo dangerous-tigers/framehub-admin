@@ -1,0 +1,20 @@
+// =============================================
+// UserStatus Styles
+// =============================================
+
+.status {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+
+  &--active {
+    color: var(--color-success-300);
+    background-color: rgba(34, 229, 132, 0.1);
+  }
+
+  &--banned {
+    color: var(--color-danger-300);
+    background-color: rgba(242, 61, 97, 0.1);
+  }
+}

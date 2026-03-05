@@ -1,19 +1,24 @@
-"use client";
+// =============================================
+// Login Page (App Router)
+// =============================================
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useMutation } from "@apollo/client/react";
-import { Button, Input, InputWithIcon } from "@dangerous-tigers/framehub-ui-kit/components";
-import { Eye, EyeOff } from "@dangerous-tigers/framehub-ui-kit/icons";
+'use client';
 
-import { LOGIN_ADMIN, LoginAdminMutation, LoginAdminMutationVariables } from "@/queries/login";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useMutation } from '@apollo/client/react';
+import { Button } from '@dangerous-tigers/framehub-ui-kit/components';
+import { Eye, EyeOff } from '@dangerous-tigers/framehub-ui-kit/icons';
+
+import { LOGIN_ADMIN, LoginAdminMutation, LoginAdminMutationVariables } from '@/queries/login';
+
+import styles from './page.module.scss';
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("");
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const [loginMutation, { loading }] = useMutation<LoginAdminMutation, LoginAdminMutationVariables>(
     LOGIN_ADMIN
@@ -21,7 +26,6 @@ export default function Login() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
 
     try {
       const { data } = await loginMutation({
@@ -32,66 +36,78 @@ export default function Login() {
       });
 
       if (data?.loginAdmin?.logged) {
-        router.push("/users");
-      } else {
-        setError("Invalid email or password");
+        router.push('/users');
       }
-    } catch {
-      setError("Connection error");
+    } catch (error) {
+      console.error('Login error:', error);
     }
   };
 
   return (
-    <div className="login-page">
-      <div className="login-header">
-        <div className="login-logo">
-          <span className="logo-text">Inctagram</span>
-          <span className="logo-subtext">Super Admin</span>
+    <div className={`${styles.page} login-page`}>
+      <header className={styles.header}>
+        <div className={styles.logo}>
+          <span className={styles['logo__text']}>Inctagram</span>
+          <span className={styles['logo__subtext']}>Super Admin</span>
         </div>
-      </div>
 
-      <div className="login-card">
-        <h2 className="login-title">Sign In</h2>
+        <select className={styles['language-select']} defaultValue="en">
+          <option value="en">🇬🇧 English</option>
+          <option value="ru">🇷🇺 Русский</option>
+          <option value="uk">🇺🇦 Українська</option>
+          <option value="be">🇧🇾 Беларуская</option>
+        </select>
+      </header>
 
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="form-field">
-            <label className="form-label">Email</label>
-            <Input
+      <div className={styles.card}>
+        <h2 className={styles.title}>Sign In</h2>
+
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.field}>
+            <label className={styles.label} htmlFor="email">
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
               type="email"
-              placeholder="Email"
+              className={styles.input}
+              placeholder="Epam@epam.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
               disabled={loading}
             />
           </div>
 
-          <div className="form-field">
-            <label className="form-label">Password</label>
-            <div className="password-input-wrapper">
-              <Input
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
+          <div className={styles.field}>
+            <label className={styles.label} htmlFor="password">
+              Password
+            </label>
+            <div className={styles['password-field']}>
+              <input
+                id="password"
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                className={styles.input}
+                placeholder="••••••••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
                 disabled={loading}
               />
               <button
                 type="button"
-                className="password-toggle"
+                className={styles['password-toggle']}
                 onClick={() => setShowPassword(!showPassword)}
                 tabIndex={-1}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
-                {showPassword ? <EyeOff /> : <Eye />}
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
           </div>
 
-          {error && <div className="error-message">{error}</div>}
-
-          <Button type="submit" className="submit-button" disabled={loading}>
-            {loading ? "Signing in..." : "Sign In"}
+          <Button type="submit" className={styles.submit} disabled={loading}>
+            Sign In
           </Button>
         </form>
       </div>

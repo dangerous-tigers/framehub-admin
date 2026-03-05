@@ -1,0 +1,18 @@
+// =============================================
+// Breakpoints Map
+// =============================================
+
+$breakpoints: (
+  'xs': '(min-width: 320px)',
+  'sm': '(min-width: 640px)',
+  'md': '(min-width: 768px)',
+  'lg': '(min-width: 1024px)',
+  'xl': '(min-width: 1280px)',
+  '2xl': '(min-width: 1536px)'
+);
+
+// Mobile-first breakpoints
+$breakpoint-mobile: 320px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-large: 1280px;
