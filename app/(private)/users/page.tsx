@@ -1,3 +1,10 @@
-export default function Users() {
-  return <span>Users</span>;
+import { ListUsers, Search } from "@/widgets/users";
+
+export default function UsersPage() {
+  return (
+    <>
+      <Search />
+      <ListUsers />
+    </>
+  );
 }
