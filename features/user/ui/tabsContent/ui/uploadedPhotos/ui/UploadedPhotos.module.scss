@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.postList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(234px, 1fr));
+  gap: 24px;
+}
+
+.noMore {
+  margin: 12px 0;
+  text-align: center;
+  color: var(--light-900);
+}
+
+.skeleton {
+  width: 234px;
+  height: 234px;
+}

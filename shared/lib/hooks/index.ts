@@ -1,6 +1,3 @@
-// =============================================
-// Shared Hooks Entry Point
-// =============================================
-
-export { useDebounce } from './useDebounce';
-export { usePagination } from './usePagination';
+export { useDebounce } from "./useDebounce";
+export { useIntersection } from "./useIntersection";
+export { usePagination } from "./usePagination";

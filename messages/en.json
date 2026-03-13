@@ -1,6 +1,40 @@
 {
   "header": {
+    "title": "Inctagram",
+    "subtitle": "SuperAdmin",
+    "language": "English"
   },
   "sidebar": {
+    "usersList": "Users list",
+    "statistics": "Statistics",
+    "paymentsList": "Payments list",
+    "postsList": "Posts list",
+    "logout": "Logout"
+  },
+  "usersPage": {
+    "title": "Users List",
+    "table": {
+      "user": "User",
+      "email": "Email",
+      "registered": "Registered",
+      "status": "Status",
+      "actions": "Actions",
+      "view": "View"
+    },
+    "status": {
+      "active": "Active",
+      "banned": "Banned"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "show": "Show",
+      "onPage": "on page",
+      "pageOf": "Page {page} of {total}"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "noData": "No users found"
   }
 }

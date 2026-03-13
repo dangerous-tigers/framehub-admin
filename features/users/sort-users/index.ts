@@ -1,6 +1,14 @@
-// =============================================
 // Sort Users Feature Entry Point
-// =============================================
 
-export { useSortUsers } from './model/useSortUsers';
-export type { SortPreset, SortOption, SortDirection } from './model/useSortUsers';
+export type {
+  SortDirection,
+  SortOption,
+  SortPreset,
+} from "./model/useSortUsers";
+export { useSortUsers } from "./model/useSortUsers";
+export {
+  SortableHeader,
+  type SortableHeaderProps,
+  type SortBy,
+  type SortField,
+} from "./ui/SortableHeader";

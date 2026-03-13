@@ -1,5 +1,1 @@
-// =============================================
-// Auth Feature Entry Point
-// =============================================
-
-export { useAuthLogin } from './model/useAuthLogin';
+export { useAuthLogin } from "./model/useAuthLogin";

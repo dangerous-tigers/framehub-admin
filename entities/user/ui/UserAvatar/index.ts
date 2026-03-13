@@ -1,6 +1,2 @@
-// =============================================
-// UserAvatar Entry Point
-// =============================================
-
-export { UserAvatar } from './UserAvatar';
-export type { UserAvatarProps } from './UserAvatar';
+export type { UserAvatarProps } from "./UserAvatar";
+export { UserAvatar } from "./UserAvatar";

@@ -1,6 +1,9 @@
 import { gql } from "@apollo/client";
 
-export { GetUsersQuery, GetUsersQueryVariables } from "./getUsers.generated";
+export type {
+  GetUsersQuery,
+  GetUsersQueryVariables,
+} from "./getUsers.generated";
 
 export const GET_USERS = gql`
   query GetUsers(

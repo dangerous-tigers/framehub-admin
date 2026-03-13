@@ -1,6 +1,40 @@
 {
   "header": {
+    "title": "Inctagram",
+    "subtitle": "SuperAdmin",
+    "language": "Беларуская"
   },
   "sidebar": {
+    "usersList": "Спіс карыстальнікаў",
+    "statistics": "Статыстыка",
+    "paymentsList": "Спіс плацяжоў",
+    "postsList": "Спіс пастоў",
+    "logout": "Выйсці"
+  },
+  "usersPage": {
+    "title": "Спіс карыстальнікаў",
+    "table": {
+      "user": "Карыстальнік",
+      "email": "Email",
+      "registered": "Дата рэгістрацыі",
+      "status": "Статус",
+      "actions": "Дзеянні",
+      "view": "Прагляд"
+    },
+    "status": {
+      "active": "Актыўны",
+      "banned": "Заблакіраваны"
+    },
+    "pagination": {
+      "previous": "Назад",
+      "next": "Наперад",
+      "show": "Паказаць",
+      "onPage": "на старонцы",
+      "pageOf": "Старонка {page} з {total}"
+    }
+  },
+  "common": {
+    "loading": "Загрузка...",
+    "noData": "Карыстальнікі не знойдзены"
   }
 }

@@ -1,11 +1,11 @@
-// =============================================
-// useAuthLogin Hook
-// =============================================
+import { useCallback, useState } from "react";
 
-import { useState, useCallback } from 'react';
-import { useMutation } from '@apollo/client/react';
-
-import { LOGIN_ADMIN, LoginAdminMutation, LoginAdminMutationVariables } from '@/queries/login';
+import {
+  LOGIN_ADMIN,
+  LoginAdminMutation,
+  LoginAdminMutationVariables,
+} from "@/queries/login";
+import { useMutation } from "@apollo/client/react";
 
 interface UseAuthLoginReturn {
   email: string;
@@ -18,18 +18,19 @@ interface UseAuthLoginReturn {
 }
 
 export function useAuthLogin(onSuccess: () => void): UseAuthLoginReturn {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const [loginMutation, { loading }] = useMutation<LoginAdminMutation, LoginAdminMutationVariables>(
-    LOGIN_ADMIN
-  );
+  const [loginMutation, { loading }] = useMutation<
+    LoginAdminMutation,
+    LoginAdminMutationVariables
+  >(LOGIN_ADMIN);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
-      setError('');
+      setError("");
 
       try {
         const { data } = await loginMutation({
@@ -42,13 +43,13 @@ export function useAuthLogin(onSuccess: () => void): UseAuthLoginReturn {
         if (data?.loginAdmin?.logged) {
           onSuccess();
         } else {
-          setError('Invalid email or password');
+          setError("Invalid email or password");
         }
       } catch {
-        setError('Connection error');
+        setError("Connection error");
       }
     },
-    [email, password, loginMutation, onSuccess]
+    [email, password, loginMutation, onSuccess],
   );
 
   return {

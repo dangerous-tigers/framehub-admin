@@ -1,10 +1,6 @@
-// =============================================
-// UserStatus Component
-// =============================================
+import { memo } from "react";
 
-import { memo } from 'react';
-
-import styles from './UserStatus.module.scss';
+import styles from "./UserStatus.module.scss";
 
 export interface UserStatusProps {
   isBanned: boolean;
@@ -18,10 +14,10 @@ export const UserStatus = memo(function UserStatus({
   return (
     <span
       className={`${styles.status} ${
-        isBanned ? styles['status--banned'] : styles['status--active']
-      } ${className || ''}`}
+        isBanned ? styles["status--banned"] : styles["status--active"]
+      } ${className || ""}`}
     >
-      {isBanned ? 'Banned' : 'Active'}
+      {isBanned ? "Banned" : "Active"}
     </span>
   );
 });

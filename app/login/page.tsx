@@ -1,28 +1,31 @@
-// =============================================
 // Login Page (App Router)
-// =============================================
 
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useMutation } from '@apollo/client/react';
-import { Button } from '@dangerous-tigers/framehub-ui-kit/components';
-import { Eye, EyeOff } from '@dangerous-tigers/framehub-ui-kit/icons';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-import { LOGIN_ADMIN, LoginAdminMutation, LoginAdminMutationVariables } from '@/queries/login';
+import {
+  LOGIN_ADMIN,
+  LoginAdminMutation,
+  LoginAdminMutationVariables,
+} from "@/queries/login";
+import { useMutation } from "@apollo/client/react";
+import { Button } from "@dangerous-tigers/framehub-ui-kit/components";
+import { Eye, EyeOff } from "@dangerous-tigers/framehub-ui-kit/icons";
 
-import styles from './page.module.scss';
+import styles from "./page.module.scss";
 
 export default function Login() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [loginMutation, { loading }] = useMutation<LoginAdminMutation, LoginAdminMutationVariables>(
-    LOGIN_ADMIN
-  );
+  const [loginMutation, { loading }] = useMutation<
+    LoginAdminMutation,
+    LoginAdminMutationVariables
+  >(LOGIN_ADMIN);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,10 +39,13 @@ export default function Login() {
       });
 
       if (data?.loginAdmin?.logged) {
-        router.push('/users');
+        // Устанавливаем cookie на 24 часа
+        document.cookie =
+          "auth_token=true; path=/; max-age=86400; SameSite=Strict";
+        router.push("/users");
       }
-    } catch (error) {
-      console.error('Login error:', error);
+    } catch {
+      // Login error handling
     }
   };
 
@@ -47,11 +53,11 @@ export default function Login() {
     <div className={`${styles.page} login-page`}>
       <header className={styles.header}>
         <div className={styles.logo}>
-          <span className={styles['logo__text']}>Inctagram</span>
-          <span className={styles['logo__subtext']}>Super Admin</span>
+          <span className={styles["logo__text"]}>Inctagram</span>
+          <span className={styles["logo__subtext"]}>Super Admin</span>
         </div>
 
-        <select className={styles['language-select']} defaultValue="en">
+        <select className={styles["language-select"]} defaultValue="en">
           <option value="en">🇬🇧 English</option>
           <option value="ru">🇷🇺 Русский</option>
           <option value="uk">🇺🇦 Українська</option>
@@ -83,11 +89,11 @@ export default function Login() {
             <label className={styles.label} htmlFor="password">
               Password
             </label>
-            <div className={styles['password-field']}>
+            <div className={styles["password-field"]}>
               <input
                 id="password"
                 name="password"
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 className={styles.input}
                 placeholder="••••••••••••••"
                 value={password}
@@ -96,12 +102,16 @@ export default function Login() {
               />
               <button
                 type="button"
-                className={styles['password-toggle']}
+                className={styles["password-toggle"]}
                 onClick={() => setShowPassword(!showPassword)}
                 tabIndex={-1}
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                aria-label={showPassword ? "Hide password" : "Show password"}
               >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                {showPassword ? (
+                  <EyeOff width={18} height={18} />
+                ) : (
+                  <Eye width={18} height={18} />
+                )}
               </button>
             </div>
           </div>

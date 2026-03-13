@@ -1,0 +1,1 @@
+export { useQueryGetFollowersByUser } from "./useQueryGetFollowersByUser";

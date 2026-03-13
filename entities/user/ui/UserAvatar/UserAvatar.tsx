@@ -1,10 +1,6 @@
-// =============================================
-// UserAvatar Component
-// =============================================
+import { memo } from "react";
 
-import { memo } from 'react';
-
-import styles from './UserAvatar.module.scss';
+import styles from "./UserAvatar.module.scss";
 
 export interface UserAvatarProps {
   src?: string | null;
@@ -27,10 +23,10 @@ export const UserAvatar = memo(function UserAvatar({
   if (!src) {
     return (
       <div
-        className={`${styles.avatar} ${styles['avatar--placeholder']} ${className || ''}`}
+        className={`${styles.avatar} ${styles["avatar--placeholder"]} ${className || ""}`}
         style={avatarStyle}
       >
-        <span className={styles['avatar__placeholder']}>
+        <span className={styles["avatar__placeholder"]}>
           {alt.charAt(0).toUpperCase()}
         </span>
       </div>
@@ -41,7 +37,7 @@ export const UserAvatar = memo(function UserAvatar({
     <img
       src={src}
       alt={alt}
-      className={`${styles.avatar} ${className || ''}`}
+      className={`${styles.avatar} ${className || ""}`}
       style={avatarStyle}
     />
   );

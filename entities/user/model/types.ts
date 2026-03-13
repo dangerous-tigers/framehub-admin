@@ -1,8 +1,4 @@
-// =============================================
-// User Entity Types
-// =============================================
-
-import { User } from '@/types/__generated__/graphql';
+import { User } from "@/types/__generated__/graphql";
 
 export type { User };
 

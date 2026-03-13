@@ -1,6 +1,40 @@
 {
   "header": {
+    "title": "Inctagram",
+    "subtitle": "SuperAdmin",
+    "language": "Русский"
   },
   "sidebar": {
+    "usersList": "Список пользователей",
+    "statistics": "Статистика",
+    "paymentsList": "Список платежей",
+    "postsList": "Список постов",
+    "logout": "Выйти"
+  },
+  "usersPage": {
+    "title": "Список пользователей",
+    "table": {
+      "user": "Пользователь",
+      "email": "Email",
+      "registered": "Дата регистрации",
+      "status": "Статус",
+      "actions": "Действия",
+      "view": "Просмотр"
+    },
+    "status": {
+      "active": "Активен",
+      "banned": "Заблокирован"
+    },
+    "pagination": {
+      "previous": "Назад",
+      "next": "Вперёд",
+      "show": "Показать",
+      "onPage": "на странице",
+      "pageOf": "Страница {page} из {total}"
+    }
+  },
+  "common": {
+    "loading": "Загрузка...",
+    "noData": "Пользователи не найдены"
   }
 }

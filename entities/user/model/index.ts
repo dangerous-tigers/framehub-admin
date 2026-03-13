@@ -1,5 +1,1 @@
-// =============================================
-// User Model Entry Point
-// =============================================
-
-export type { User, UserWithProfile } from './types';
+export type { User, UserWithProfile } from "./types";
