@@ -1,7 +1,7 @@
-import Link from "next/link";
-import clsx from "clsx";
+import Link from 'next/link';
+import clsx from 'clsx';
 
-import s from "./sidebarItem.module.scss";
+import s from './sidebarItem.module.scss';
 
 type Props = {
   children: React.ReactNode;
@@ -13,8 +13,7 @@ type Props = {
   onClick?: (e: React.MouseEvent) => void;
 };
 export const SidebarItem = (props: Props) => {
-  const { children, Component, href, className, isActive, disabled, onClick } =
-    props;
+  const { children, Component, href, className, isActive, disabled, onClick } = props;
 
   const classes = clsx(s.item, className, {
     [s.active]: isActive,
@@ -23,7 +22,11 @@ export const SidebarItem = (props: Props) => {
 
   if (disabled) {
     return (
-      <span aria-disabled tabIndex={-1} className={classes}>
+      <span
+        aria-disabled
+        tabIndex={-1}
+        className={classes}
+      >
         {Component} {children}
       </span>
     );
@@ -31,14 +34,21 @@ export const SidebarItem = (props: Props) => {
 
   if (onClick) {
     return (
-      <span className={classes} onClick={onClick} style={{ cursor: "pointer" }}>
+      <span
+        className={classes}
+        onClick={onClick}
+        style={{ cursor: 'pointer' }}
+      >
         {Component} {children}
       </span>
     );
   }
 
   return (
-    <Link href={href} className={classes}>
+    <Link
+      href={href}
+      className={classes}
+    >
       {Component} {children}
     </Link>
   );
