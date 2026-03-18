@@ -1,5 +1,5 @@
-import { forwardRef, memo, Ref } from "react";
-import type { SVGProps } from "react";
+import { forwardRef, memo, Ref } from 'react';
+import type { SVGProps } from 'react';
 
 const SvgExplorer = (
   props: SVGProps<SVGSVGElement>,
