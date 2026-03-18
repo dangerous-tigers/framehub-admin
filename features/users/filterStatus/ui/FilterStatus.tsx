@@ -1,13 +1,10 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { Select } from "@dangerous-tigers/framehub-ui-kit/components";
+import { Select } from '@dangerous-tigers/framehub-ui-kit/components';
 
-import {
-  FILTER_OPTIONS,
-  useFilterStatusParam,
-} from "../model/useFilterStatusParam";
+import { FILTER_OPTIONS, useFilterStatusParam } from '../model/useFilterStatusParam';
 
 export const FilterStatus = () => {
   const { initialValue, syncFilterStatusParam } = useFilterStatusParam();
@@ -26,8 +23,8 @@ export const FilterStatus = () => {
         setValue(nextFilter);
         syncFilterStatusParam(nextFilter);
       }}
-      variant="default"
-      width="210px"
+      variant='default'
+      width='210px'
     />
   );
 };

@@ -1,12 +1,12 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { Popover } from "@dangerous-tigers/framehub-ui-kit/components";
-import Block from "@dangerous-tigers/framehub-ui-kit/icons/Block";
-import Block1 from "@dangerous-tigers/framehub-ui-kit/icons/Block1";
-import MoreHorizontal from "@dangerous-tigers/framehub-ui-kit/icons/MoreHorizontal";
-import PersonRemoveOutline from "@dangerous-tigers/framehub-ui-kit/icons/PersonRemoveOutline";
+import { Popover } from '@dangerous-tigers/framehub-ui-kit/components';
+import Block from '@dangerous-tigers/framehub-ui-kit/icons/Block';
+import Block1 from '@dangerous-tigers/framehub-ui-kit/icons/Block1';
+import MoreHorizontal from '@dangerous-tigers/framehub-ui-kit/icons/MoreHorizontal';
+import PersonRemoveOutline from '@dangerous-tigers/framehub-ui-kit/icons/PersonRemoveOutline';
 
-import s from "./Popover.module.scss";
+import s from './Popover.module.scss';
 
 type Props = {
   isBanned?: boolean;
@@ -28,7 +28,10 @@ export const PopoverComponent = ({ isBanned, userId }: Props) => {
 
   return (
     <div className={s.root}>
-      <Popover isOwner={false} isAuthorized={false}>
+      <Popover
+        isOwner={false}
+        isAuthorized={false}
+      >
         <ul className={s.list}>
           <li onClick={onClickDelete}>
             <PersonRemoveOutline />

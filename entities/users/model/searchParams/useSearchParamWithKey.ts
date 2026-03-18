@@ -1,23 +1,20 @@
-"use client";
+'use client';
 
-import { useCallback, useMemo } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useCallback, useMemo } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 type UseSearchParamWithKeyProps = {
   key: string;
   trim?: boolean;
 };
 
-export const useSearchParamWithKey = ({
-  key,
-  trim = true,
-}: UseSearchParamWithKeyProps) => {
+export const useSearchParamWithKey = ({ key, trim = true }: UseSearchParamWithKeyProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const initialValue = useMemo(() => {
-    return searchParams.get(key) ?? "";
+    return searchParams.get(key) ?? '';
   }, [key, searchParams]);
 
   const syncSearchParam = useCallback(
@@ -31,9 +28,9 @@ export const useSearchParamWithKey = ({
         params.delete(key);
       }
 
-      if (key === "s" || key === "fs") {
-        params.delete("p");
-        params.delete("ps");
+      if (key === 's' || key === 'fs') {
+        params.delete('p');
+        params.delete('ps');
       }
 
       const query = params.toString();

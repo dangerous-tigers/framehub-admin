@@ -1,5 +1,5 @@
-"use client";
-import { useCallback, useEffect, useRef } from "react";
+'use client';
+import { useCallback, useEffect, useRef } from 'react';
 
 export function useIntersection(onIntersect: () => void) {
   const observerRef = useRef<IntersectionObserver | null>(null);

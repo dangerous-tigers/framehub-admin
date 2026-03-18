@@ -1,10 +1,10 @@
-import { useCallback } from "react";
+import { useCallback } from 'react';
 
-import { useIntersection } from "@/shared/lib/hooks";
-import { ImagePost } from "@/types/__generated__/graphql";
-import { useQuery } from "@apollo/client/react";
+import { useIntersection } from '@/shared/lib/hooks';
+import { ImagePost } from '@/types/__generated__/graphql';
+import { useQuery } from '@apollo/client/react';
 
-import { GET_POST_BY_USER } from "../api/getPostByUser.query";
+import { GET_POST_BY_USER } from '../api/getPostByUser.query';
 
 export function useGetPostsUserInfinite({ userId }: { userId: number }) {
   const { data, fetchMore, loading } = useQuery<{

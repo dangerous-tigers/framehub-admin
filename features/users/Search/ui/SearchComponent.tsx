@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
-import { useDebounce } from "@/shared/lib/hooks";
-import { Input } from "@dangerous-tigers/framehub-ui-kit/components";
+import { useDebounce } from '@/shared/lib/hooks';
+import { Input } from '@dangerous-tigers/framehub-ui-kit/components';
 
-import { useSearchParamWithKey } from "../model/useSearchParamWithKey";
+import { useSearchParamWithKey } from '../model/useSearchParamWithKey';
 
 export const SearchComponent = () => {
   const { initialValue, syncSearchParam } = useSearchParamWithKey();
@@ -39,8 +39,8 @@ export const SearchComponent = () => {
 
   return (
     <Input
-      placeholder="Search"
-      type="search"
+      placeholder='Search'
+      type='search'
       value={value}
       onChange={handleChange}
     />

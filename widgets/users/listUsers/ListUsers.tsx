@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import Link from "next/link";
+import Link from 'next/link';
 
-import { useQueryGetListUsers, useSort } from "@/entities/users";
-import { PaginationTable, PopoverComponent } from "@/features/users";
-import { ButtonTableHead } from "@/features/users/buttonTableHead/ButtonTableHead";
+import { useQueryGetListUsers, useSort } from '@/entities/users';
+import { PaginationTable, PopoverComponent } from '@/features/users';
+import { ButtonTableHead } from '@/features/users/buttonTableHead/ButtonTableHead';
 import {
   Table,
   TableBody,
@@ -12,9 +12,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@dangerous-tigers/framehub-ui-kit/components";
+} from '@dangerous-tigers/framehub-ui-kit/components';
 
-import s from "./ListUsers.module.scss";
+import s from './ListUsers.module.scss';
 
 export const ListUsers = () => {
   const { data, error, loading } = useQueryGetListUsers();
@@ -31,21 +31,21 @@ export const ListUsers = () => {
 
   return (
     <div className={s.root}>
-      <Table style={{ marginTop: "1.5rem" }}>
+      <Table style={{ marginTop: '1.5rem' }}>
         <TableHeader>
           <TableRow>
             <TableHead>User ID</TableHead>
             <TableHead>
               <ButtonTableHead
-                label="Profile link"
-                onClick={() => handleSort("userName")}
+                label='Profile link'
+                onClick={() => handleSort('userName')}
               />
             </TableHead>
             <TableHead>Email</TableHead>
             <TableHead>
               <ButtonTableHead
-                label="Date added"
-                onClick={() => handleSort("createdAt")}
+                label='Date added'
+                onClick={() => handleSort('createdAt')}
               />
             </TableHead>
             <TableHead></TableHead>
@@ -56,7 +56,10 @@ export const ListUsers = () => {
             <TableRow key={user.id}>
               <TableCell>{user.id}</TableCell>
               <TableCell className={s.link}>
-                <Link target="_blank" href={`users/${user.id}`}>
+                <Link
+                  target='_blank'
+                  href={`users/${user.id}`}
+                >
                   {user.userName}
                 </Link>
               </TableCell>
@@ -72,7 +75,11 @@ export const ListUsers = () => {
           ))}
         </TableBody>
       </Table>
-      <PaginationTable page={page} pageSize={pageSize} pageTotal={pagesCount} />
+      <PaginationTable
+        page={page}
+        pageSize={pageSize}
+        pageTotal={pagesCount}
+      />
     </div>
   );
 };

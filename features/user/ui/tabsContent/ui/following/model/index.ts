@@ -1,1 +1,1 @@
-export { useQueryGetFollowingByUser } from "./useQueryGetFollowingByUser";
+export { useQueryGetFollowingByUser } from './useQueryGetFollowingByUser';

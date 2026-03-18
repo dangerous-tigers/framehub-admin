@@ -1,5 +1,5 @@
-import { useCallback } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 export const useSort = () => {
   const searchParams = useSearchParams();
@@ -7,25 +7,24 @@ export const useSort = () => {
   const router = useRouter();
 
   const handleSort = useCallback(
-    (targetSortBy: "userName" | "createdAt") => {
+    (targetSortBy: 'userName' | 'createdAt') => {
       const params = new URLSearchParams(searchParams.toString());
-      const currentSortBy = params.get("sortBy") || "createdAt";
-      const currentSortDirection = params.get("sortDirection") || "desc";
+      const currentSortBy = params.get('sortBy') || 'createdAt';
+      const currentSortDirection = params.get('sortDirection') || 'desc';
 
       const isSameSortBy = currentSortBy === targetSortBy;
-      const nextSortDirection =
-        isSameSortBy && currentSortDirection === "desc" ? "asc" : "desc";
+      const nextSortDirection = isSameSortBy && currentSortDirection === 'desc' ? 'asc' : 'desc';
 
-      if (targetSortBy === "createdAt") {
-        params.delete("sortBy");
+      if (targetSortBy === 'createdAt') {
+        params.delete('sortBy');
       } else {
-        params.set("sortBy", targetSortBy);
+        params.set('sortBy', targetSortBy);
       }
 
-      if (nextSortDirection === "desc") {
-        params.delete("sortDirection");
+      if (nextSortDirection === 'desc') {
+        params.delete('sortDirection');
       } else {
-        params.set("sortDirection", "asc");
+        params.set('sortDirection', 'asc');
       }
 
       const query = params.toString();

@@ -1,4 +1,4 @@
-import { ListUsers, Search } from "@/widgets/users";
+import { ListUsers, Search } from '@/widgets/users';
 
 export default function UsersPage() {
   return (

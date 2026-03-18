@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { FilterStatus } from "@/features/users/filterStatus/ui/FilterStatus";
-import { SearchComponent } from "@/features/users/Search/ui/SearchComponent";
+import { FilterStatus } from '@/features/users/filterStatus/ui/FilterStatus';
+import { SearchComponent } from '@/features/users/Search/ui/SearchComponent';
 
-import s from "./Search.module.scss";
+import s from './Search.module.scss';
 
 export const Search = () => {
   return (

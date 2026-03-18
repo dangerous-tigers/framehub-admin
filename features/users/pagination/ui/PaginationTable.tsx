@@ -1,5 +1,5 @@
-import { useSearchParamWithKey } from "@/entities/users/model/searchParams/useSearchParamWithKey";
-import { Pagination } from "@dangerous-tigers/framehub-ui-kit/components";
+import { useSearchParamWithKey } from '@/entities/users/model/searchParams/useSearchParamWithKey';
+import { Pagination } from '@dangerous-tigers/framehub-ui-kit/components';
 
 type PaginationTableProps = {
   page: number | undefined;
@@ -8,14 +8,12 @@ type PaginationTableProps = {
 };
 
 export const PaginationTable = (props: PaginationTableProps) => {
-  const { initialValue: page, syncSearchParam: syncSearchParamPage } =
-    useSearchParamWithKey({
-      key: "p",
-    });
-  const { initialValue: pageSize, syncSearchParam: syncSearchParamPageSize } =
-    useSearchParamWithKey({
-      key: "ps",
-    });
+  const { initialValue: page, syncSearchParam: syncSearchParamPage } = useSearchParamWithKey({
+    key: 'p',
+  });
+  const { initialValue: pageSize, syncSearchParam: syncSearchParamPageSize } = useSearchParamWithKey({
+    key: 'ps',
+  });
 
   if (props.page === undefined || props.pageTotal === 0) {
     return null;

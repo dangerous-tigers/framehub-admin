@@ -1,1 +1,1 @@
-export { GET_PAYMENTS_BY_USER } from "./getPaymentsByUser.query";
+export { GET_PAYMENTS_BY_USER } from './getPaymentsByUser.query';

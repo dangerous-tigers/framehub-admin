@@ -1,2 +1,2 @@
-export { formatDate } from "./formatDate";
-export { normalizeSubsriptionType } from "./normalizeSubsriptionType";
+export { formatDate } from './formatDate';
+export { normalizeSubsriptionType } from './normalizeSubsriptionType';

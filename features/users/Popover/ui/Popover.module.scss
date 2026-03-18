@@ -1,12 +1,15 @@
 .root {
   display: flex;
   justify-content: flex-end;
+
   & > button {
     padding: 0;
   }
 }
+
 .list {
-  & li, a {
+  & li,
+  a {
     display: flex;
     align-items: center;
     cursor: pointer;

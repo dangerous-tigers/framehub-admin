@@ -1,4 +1,4 @@
-import s from "./NoTableContent.module.scss";
+import s from './NoTableContent.module.scss';
 
 export function NoTableContent() {
   return (

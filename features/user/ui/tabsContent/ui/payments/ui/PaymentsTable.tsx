@@ -1,4 +1,4 @@
-import { formatDate, normalizeSubsriptionType } from "@/shared/lib";
+import { formatDate, normalizeSubsriptionType } from '@/shared/lib';
 import {
   Skeleton,
   Table,
@@ -7,10 +7,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@dangerous-tigers/framehub-ui-kit/components";
+} from '@dangerous-tigers/framehub-ui-kit/components';
 
-import { NoTableContent } from "../../NoTableContent";
-import { BusinessAccountSubscription, GetPaymentsByUser } from "../model/types";
+import { NoTableContent } from '../../NoTableContent';
+import { BusinessAccountSubscription, GetPaymentsByUser } from '../model/types';
 
 export function PaymentsTable({
   column,
@@ -46,7 +46,7 @@ export function PaymentsTable({
               <TableRow key={index}>
                 {[...Array(SKELENON_COLUMN_COUNT)].map((_, index) => (
                   <TableCell key={index}>
-                    <Skeleton style={{ width: "150px", height: "22px" }} />
+                    <Skeleton style={{ width: '150px', height: '22px' }} />
                   </TableCell>
                 ))}
               </TableRow>
