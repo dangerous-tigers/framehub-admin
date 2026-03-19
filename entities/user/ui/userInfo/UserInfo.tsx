@@ -1,24 +1,21 @@
-import clsx from "clsx";
+import clsx from 'clsx';
 
-import { formatDate } from "@/shared/lib";
-import { User } from "@/types/__generated__/graphql";
-import { Avatar } from "@dangerous-tigers/framehub-ui-kit/components";
+import { formatDate } from '@/shared/lib';
+import { User } from '@/types/__generated__/graphql';
+import { Avatar } from '@dangerous-tigers/framehub-ui-kit/components';
 
-import s from "./UserInfo.module.scss";
+import s from './UserInfo.module.scss';
 
-export function UserInfo({
-  user,
-  className,
-}: {
-  user: User;
-  className?: string;
-}) {
+export function UserInfo({ user, className }: { user: User; className?: string }) {
   const avatarUrl = user.profile?.avatars?.[0]?.url;
 
   return (
     <div className={clsx(s.root, className)}>
       <div className={s.userInfoTop}>
-        <Avatar url={avatarUrl} size="l" />
+        <Avatar
+          url={avatarUrl}
+          size='l'
+        />
         <div className={s.info}>
           <p className={s.infoName}>{user.userName}</p>
           <p className={s.infoEmail}>{user.email}</p>

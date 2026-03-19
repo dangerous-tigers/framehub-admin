@@ -1,18 +1,12 @@
-"use client";
-import Link from "next/link";
+'use client';
+import Link from 'next/link';
 
-import { formatDate } from "@/shared/lib";
-import { Follow } from "@/types/__generated__/graphql";
-import {
-  Skeleton,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-} from "@dangerous-tigers/framehub-ui-kit/components";
+import { formatDate } from '@/shared/lib';
+import { Follow } from '@/types/__generated__/graphql';
+import { Skeleton, Table, TableBody, TableCell, TableRow } from '@dangerous-tigers/framehub-ui-kit/components';
 
-import { NoTableContent, SortableHeader } from "../../";
-import { GetFollowingByUser } from "../model/types";
+import { NoTableContent, SortableHeader } from '../../';
+import { GetFollowingByUser } from '../model/types';
 
 export function FollowingTable({
   followers,
@@ -22,18 +16,15 @@ export function FollowingTable({
   sortBy,
   setCurrentPageAndSortBy,
 }: {
-  followers?: GetFollowingByUser["items"];
+  followers?: GetFollowingByUser['items'];
   loading: boolean;
   pageSize: number;
   className?: string;
   sortBy: {
-    field: "createdAt" | "userName";
-    direction: "asc" | "desc";
+    field: 'createdAt' | 'userName';
+    direction: 'asc' | 'desc';
   };
-  setCurrentPageAndSortBy: (
-    field: "createdAt" | "userName",
-    direction: "asc" | "desc",
-  ) => void;
+  setCurrentPageAndSortBy: (field: 'createdAt' | 'userName', direction: 'asc' | 'desc') => void;
 }) {
   if (followers?.length === 0) {
     return <NoTableContent />;
@@ -53,7 +44,7 @@ export function FollowingTable({
               <TableRow key={index}>
                 {[...Array(SKELENON_COLUMN_COUNT)].map((_, index) => (
                   <TableCell key={index}>
-                    <Skeleton style={{ width: "150px", height: "22px" }} />
+                    <Skeleton style={{ width: '150px', height: '22px' }} />
                   </TableCell>
                 ))}
               </TableRow>
@@ -63,7 +54,7 @@ export function FollowingTable({
                 <TableCell>{follower.userId}</TableCell>
                 <TableCell>
                   <Link
-                    style={{ textDecoration: "underline" }}
+                    style={{ textDecoration: 'underline' }}
                     href={`/users/${follower.userId}`}
                   >
                     {follower.userName}

@@ -1,20 +1,15 @@
-import { Pagination } from "@dangerous-tigers/framehub-ui-kit/components";
+import { Pagination } from '@dangerous-tigers/framehub-ui-kit/components';
 
-import { PAYMENTS_TABLE_HEADERS, useQueryGetPaymentsByUser } from "../model";
+import { PAYMENTS_TABLE_HEADERS, useQueryGetPaymentsByUser } from '../model';
 
-import { PaymentsTable } from "./PaymentsTable";
+import { PaymentsTable } from './PaymentsTable';
 
-import s from "./Payments.module.scss";
+import s from './Payments.module.scss';
 
 export function Payment({ userId }: { userId: number }) {
-  const {
-    data,
-    loading,
-    pageSize,
-    onPageSizeChange,
-    currentPage,
-    setCurrentPage,
-  } = useQueryGetPaymentsByUser({ userId });
+  const { data, loading, pageSize, onPageSizeChange, currentPage, setCurrentPage } = useQueryGetPaymentsByUser({
+    userId,
+  });
 
   return (
     <div className={s.root}>

@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { QueryGetPaymentsByUserArgs } from "@/types/__generated__/graphql";
-import { useQuery } from "@apollo/client/react";
+import { QueryGetPaymentsByUserArgs } from '@/types/__generated__/graphql';
+import { useQuery } from '@apollo/client/react';
 
-import { GET_PAYMENTS_BY_USER } from "../api/getPaymentsByUser.query";
+import { GET_PAYMENTS_BY_USER } from '../api/getPaymentsByUser.query';
 
-import { GetPaymentsByUser } from "./types";
+import { GetPaymentsByUser } from './types';
 
 export const useQueryGetPaymentsByUser = ({ userId }: { userId: number }) => {
   const [pageSize, setPageSize] = useState(10);

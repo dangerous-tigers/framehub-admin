@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export function usePaginationState() {
   const [pageSize, setPageSize] = useState(5);

@@ -12,15 +12,15 @@ export type BusinessAccountSubscription = {
   startDate: string;
   id: string;
 
-  paymentType: "PAYPAL" | "STRIPE" | "CREDIT_CARD";
-  status: "ACTIVE" | "EXPIRED" | "CANCELED";
-  type: "WEEKLY" | "MONTHLY" | "DAY";
+  paymentType: 'PAYPAL' | 'STRIPE' | 'CREDIT_CARD';
+  status: 'ACTIVE' | 'EXPIRED' | 'CANCELED';
+  type: 'WEEKLY' | 'MONTHLY' | 'DAY';
 
   price: number;
 
   payments: {
     amount: number;
-    type: "PAYPAL" | "STRIPE" | "CREDIT_CARD";
-    __typename: "Payment";
+    type: 'PAYPAL' | 'STRIPE' | 'CREDIT_CARD';
+    __typename: 'Payment';
   }[];
 };

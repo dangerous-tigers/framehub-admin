@@ -1,1 +1,1 @@
-export { useIntersection } from "./useIntersection";
+export { useIntersection } from './useIntersection';

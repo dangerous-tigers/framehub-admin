@@ -1,10 +1,6 @@
-import { UserPage } from "@/features/user/ui/UserPage";
+import { UserPage } from '@/features/user/ui/UserPage';
 
-export default async function UserHomePage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function UserHomePage({ params }: { params: Promise<{ id: string }> }) {
   const id = (await params).id;
 
   return (

@@ -1,22 +1,14 @@
-import { Pagination } from "@dangerous-tigers/framehub-ui-kit/components";
+import { Pagination } from '@dangerous-tigers/framehub-ui-kit/components';
 
-import { useQueryGetFollowersByUser } from "../model";
+import { useQueryGetFollowersByUser } from '../model';
 
-import { FollowersTable } from "./FollowersTable";
+import { FollowersTable } from './FollowersTable';
 
-import s from "./Followers.module.scss";
+import s from './Followers.module.scss';
 
 export function Followers({ userId }: { userId: number }) {
-  const {
-    data,
-    loading,
-    pageSize,
-    onPageSizeChange,
-    currentPage,
-    setCurrentPage,
-    sortBy,
-    setCurrentPageAndSortBy,
-  } = useQueryGetFollowersByUser({ userId });
+  const { data, loading, pageSize, onPageSizeChange, currentPage, setCurrentPage, sortBy, setCurrentPageAndSortBy } =
+    useQueryGetFollowersByUser({ userId });
 
   return (
     <div className={s.root}>

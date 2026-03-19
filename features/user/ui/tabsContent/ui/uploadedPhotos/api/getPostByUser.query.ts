@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_POST_BY_USER = gql`
   query getPostsByUser($userId: Int!, $endCursorId: Int) {
