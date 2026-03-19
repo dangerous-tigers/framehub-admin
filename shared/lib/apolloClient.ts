@@ -1,15 +1,15 @@
-import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
-import { SetContextLink } from "@apollo/client/link/context";
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { SetContextLink } from '@apollo/client/link/context';
 
 const httpLink = new HttpLink({
-  uri: "https://inctagram.work/api/v1/graphql",
+  uri: 'https://inctagram.work/api/v1/graphql',
 });
 
 const authMiddleware = new SetContextLink(({ headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: "Basic YWRtaW5AZ21haWwuY29tOmFkbWlu",
+      authorization: 'Basic YWRtaW5AZ21haWwuY29tOmFkbWlu',
     },
   };
 });

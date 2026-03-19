@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { ReactNode } from "react";
+import { type ReactNode } from 'react';
 
-import styles from "./page.module.css";
+import styles from './page.module.css';
 
 export default function Home({ children }: { children: ReactNode }) {
   return (
