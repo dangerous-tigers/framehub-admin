@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 
-import { QueryGetUsersArgs, UserBlockStatus, UsersPaginationModel } from '@/types/__generated__/graphql';
+import { QueryGetUsersArgs, SortDirection, UserBlockStatus, UsersPaginationModel } from '@/generated/graphql';
 import { useQuery } from '@apollo/client/react';
 
 import { GET_LIST_USERS } from '../api/getListUsers.query';
@@ -20,7 +20,7 @@ export const useQueryGetListUsers = () => {
       searchTerm: searchParams.get('s'),
       statusFilter: statusFilter as UserBlockStatus,
       sortBy,
-      sortDirection: sortDirection as 'asc' | 'desc',
+      sortDirection: sortDirection as SortDirection,
       pageNumber: parseInt(pageNumber, 10),
       pageSize: parseInt(pageSize, 8),
     },

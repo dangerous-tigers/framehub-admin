@@ -1,8 +1,8 @@
 'use client';
 import Link from 'next/link';
 
+import { Follow } from '@/generated/graphql';
 import { formatDate } from '@/shared/lib';
-import { Follow } from '@/types/__generated__/graphql';
 import { Skeleton, Table, TableBody, TableCell, TableRow } from '@dangerous-tigers/framehub-ui-kit/components';
 
 import { NoTableContent } from '../../NoTableContent';

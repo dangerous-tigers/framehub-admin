@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { QueryGetPaymentsByUserArgs } from '@/types/__generated__/graphql';
+import { QueryGetPaymentsByUserArgs } from '@/generated/graphql';
 import { useQuery } from '@apollo/client/react';
 
 import { GET_PAYMENTS_BY_USER } from '../api/getPaymentsByUser.query';

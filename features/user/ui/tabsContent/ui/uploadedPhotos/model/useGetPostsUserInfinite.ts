@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 
+import { ImagePost } from '@/generated/graphql';
 import { useIntersection } from '@/shared/lib/hooks';
-import { ImagePost } from '@/types/__generated__/graphql';
 import { useQuery } from '@apollo/client/react';
 
 import { GET_POST_BY_USER } from '../api/getPostByUser.query';

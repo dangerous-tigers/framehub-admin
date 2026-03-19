@@ -1,3 +1,5 @@
+import { PaymentsList } from '@/app/features/payments';
+
 export default function Payments() {
-  return <span>Payments</span>;
+  return <PaymentsList />;
 }
