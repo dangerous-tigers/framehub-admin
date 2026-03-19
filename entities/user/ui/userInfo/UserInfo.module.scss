@@ -1,0 +1,35 @@
+.root {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoName {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+}
+
+.infoEmail {
+  font-size: var(--font-size-xl);
+  text-decoration: underline;
+}
+
+.userInfoTop {
+  display: flex;
+  gap: 24px;
+}
+
+.userInfoBottom {
+  display: flex;
+  gap: 24px;
+  font-size: var(--font-size-m);
+}
+
+.userInfoBottomTitle {
+  color: var(--light-900);
+}
