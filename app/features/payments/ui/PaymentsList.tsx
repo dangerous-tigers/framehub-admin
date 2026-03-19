@@ -283,7 +283,7 @@ export const PaymentsList = () => {
                         {payment.userName}
                       </div>
                     </TableCell>
-                    <TableCell>{formatDate(createdAt(payment.createdAt))}</TableCell>
+                    <TableCell>{formatDate(createdAt(payment.createdAt) || '')}</TableCell>
                     <TableCell>
                       <span>{payment.amount} </span>
                       <span>{currency()}</span>

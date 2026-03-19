@@ -1,4 +1,4 @@
-import { QueryGetFollowersArgs } from '@/generated/graphql';
+import { QueryGetFollowersArgs, SortDirection } from '@/generated/graphql';
 import { useQuery } from '@apollo/client/react';
 
 import { usePaginationState, useTableSort } from '../../../model/';
@@ -21,7 +21,7 @@ export const useQueryGetFollowingByUser = ({ userId }: { userId: number }) => {
       pageSize: pageSize,
       pageNumber: currentPage,
       sortBy: sortBy.field,
-      sortDirection: sortBy.direction as 'asc' | 'desc',
+      sortDirection: sortBy.direction as SortDirection,
     },
   });
 
