@@ -1,31 +1,33 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 
-import { LOGIN_ADMIN } from '@/queries/login';
-import { LoginAdminMutation } from '@/queries/login.generated';
-import { useMutation } from '@apollo/client/react';
+import { Sidebar } from '@/widgets/sidebar';
 
 export function AppShell({ children }: { children: ReactNode }) {
-  const [loginMutation] = useMutation<LoginAdminMutation>(LOGIN_ADMIN, {
-    variables: { email: 'admin@gmail.com', password: 'admin' },
-  });
-  //const [isAuth, setIsAuth] = useState(false);
+  const pathname = usePathname();
+  const isUserDetailsPage = /^\/users\/[^/]+$/.test(pathname);
 
-  const handleLogin = async () => {
-    const { data } = await loginMutation({});
+  // const [loginMutation] = useMutation<LoginAdminMutation>(LOGIN_ADMIN, {
+  //   variables: { email: 'admin@gmail.com', password: 'admin' },
+  // });
+  //const [isAuth] = useState(true);
 
-    if (data?.loginAdmin.logged) {
-      //setIsAuth(true);
-    }
-  };
+  // const handleLogin = async () => {
+  //   const { data } = await loginMutation({});
+
+  //   if (data?.loginAdmin.logged) {
+  //     setIsAuth(true);
+  //   }
+  // };
 
   return (
     <div className='mainBox'>
       <main className='main'>
-        <div>
-          <button onClick={handleLogin}>LOGIN</button>
+        <div className='mainBoxBody'>
           {/* {isAuth && <Sidebar />} */}
+          {!isUserDetailsPage && <Sidebar />}
           {children}
         </div>
       </main>
