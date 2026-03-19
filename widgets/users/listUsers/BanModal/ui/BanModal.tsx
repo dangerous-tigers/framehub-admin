@@ -67,23 +67,7 @@ export function BanModal({
         <p className={s.text}>
           Are you sure to ban this user <b>{userName}</b>?
         </p>
-
-        {/* <select
-          name='ban-reason'
-          id='ban-reason'
-          value={selectedBanReason}
-          onChange={handleReasonSelectChange}
-        >
-          {banReasonOptions.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-            >
-              {option.label}
-            </option>
-          ))}
-        </select> */}
-
+        
         <Select
           width='100%'
           options={selectOptions}
