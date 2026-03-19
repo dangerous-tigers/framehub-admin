@@ -2,6 +2,7 @@
 
 import { type ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
+import clsx from 'clsx';
 
 import { Sidebar } from '@/widgets/sidebar';
 
@@ -25,7 +26,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className='mainBox'>
       <main className='main'>
-        <div className='mainBoxBody'>
+        <div className={clsx({ ['mainBoxBody']: !isUserDetailsPage })}>
           {/* {isAuth && <Sidebar />} */}
           {!isUserDetailsPage && <Sidebar />}
           {children}

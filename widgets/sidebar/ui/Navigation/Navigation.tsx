@@ -50,7 +50,11 @@ export const Navigation = ({ className }: PropsNavigation) => {
                 // }
               }}
             >
-              <Component /> {isMobile ? '' : label}
+              <Component
+                width='1.5rem'
+                height='1.5rem'
+              />{' '}
+              {isMobile ? '' : label}
             </PolymorphicButton>
           );
         })}
