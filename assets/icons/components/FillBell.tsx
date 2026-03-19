@@ -1,5 +1,5 @@
-import { forwardRef, memo, Ref } from "react";
-import type { SVGProps } from "react";
+import { forwardRef, memo, Ref } from 'react';
+import type { SVGProps } from 'react';
 
 const SvgFillBell = (
   props: SVGProps<SVGSVGElement>,
@@ -28,7 +28,7 @@ const SvgFillBell = (
       y={2}
       maskUnits="userSpaceOnUse"
       style={{
-        maskType: "luminance",
+        maskType: 'luminance',
       }}
     >
       <path

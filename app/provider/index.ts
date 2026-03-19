@@ -1,3 +1,3 @@
-import { AppProviders } from "./AppProviders";
+import { AppProviders } from './AppProviders';
 
 export { AppProviders };

@@ -1,20 +1,14 @@
-"use client";
+'use client';
 
-import { ChangeEvent, useState } from "react";
-import clsx from "clsx";
+import { ChangeEvent, useState } from 'react';
+import clsx from 'clsx';
 
-import { SORT_BY, SortBy } from "@/app/features/payments/model/types";
-import {
-  Avatar,
-  CurrencyType,
-  PaymentMethod,
-  SortDirection,
-  SubscriptionType,
-} from "@/generated/graphql";
-import { GET_PAYMENTS } from "@/queries/payments";
-import { useDebounce } from "@/shared/hooks/useDebounce";
-import { formatDate } from "@/shared/lib/formatDate";
-import { useQuery } from "@apollo/client/react";
+import { SORT_BY, SortBy } from '@/app/features/payments/model/types';
+import { Avatar, CurrencyType, PaymentMethod, SortDirection, SubscriptionType } from '@/generated/graphql';
+import { GET_PAYMENTS } from '@/queries/payments';
+import { useDebounce } from '@/shared/hooks/useDebounce';
+import { formatDate } from '@/shared/lib/formatDate';
+import { useQuery } from '@apollo/client/react';
 import {
   Button,
   Input,
@@ -26,11 +20,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@dangerous-tigers/framehub-ui-kit/components";
+} from '@dangerous-tigers/framehub-ui-kit/components';
 
-import s from "./PaymentsList.module.scss";
+import s from './PaymentsList.module.scss';
 
-import "@dangerous-tigers/framehub-ui-kit/components/styles";
+import '@dangerous-tigers/framehub-ui-kit/components/styles';
 
 export const usePaginationQuery = ({
   currentPage,
@@ -62,12 +56,7 @@ export const usePaginationQuery = ({
   };
 };
 
-export type Columns =
-  | "Username"
-  | "Date of Payment"
-  | "Amount, $"
-  | "Subscription"
-  | "Payment Method";
+export type Columns = 'Username' | 'Date of Payment' | 'Amount, $' | 'Subscription' | 'Payment Method';
 
 export type TableColumn = {
   column: Columns;
@@ -78,8 +67,8 @@ export type TableColumn = {
 
 export const PaymentsList = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState("6");
-  const [search, setSearch] = useState("");
+  const [pageSize, setPageSize] = useState('6');
+  const [search, setSearch] = useState('');
   const [sort, setSort] = useState<SortBy>(SORT_BY.CREATED_AT);
   const [direction, setDirection] = useState<SortDirection>(SortDirection.Desc);
 
@@ -152,10 +141,7 @@ export const PaymentsList = () => {
     if (sort !== SORT_BY.PAYMENT_METHOD) {
       setSort(SORT_BY.PAYMENT_METHOD);
       setDirection(direction === dir ? SortDirection.Desc : SortDirection.Asc);
-    } else if (
-      sort === SORT_BY.PAYMENT_METHOD &&
-      direction === SortDirection.Asc
-    ) {
+    } else if (sort === SORT_BY.PAYMENT_METHOD && direction === SortDirection.Asc) {
       setDirection(SortDirection.Desc);
     } else {
       setSort(SORT_BY.PAYMENT_METHOD);
@@ -165,26 +151,26 @@ export const PaymentsList = () => {
 
   const tableHeadItems: TableColumn[] = [
     {
-      column: "Username",
+      column: 'Username',
       sort: SORT_BY.USER_NAME,
       direction: SortDirection.Desc,
       filterHandler: () => handleUserNameSort(direction),
     },
     {
-      column: "Date of Payment",
+      column: 'Date of Payment',
       sort: SORT_BY.CREATED_AT,
       direction: SortDirection.Desc,
       filterHandler: () => handleDateSort(direction),
     },
     {
-      column: "Amount, $",
+      column: 'Amount, $',
       sort: SORT_BY.AMOUNT,
       direction: SortDirection.Desc,
       filterHandler: () => handleAmountSort(direction),
     },
-    { column: "Subscription", filterHandler: () => {} },
+    { column: 'Subscription', filterHandler: () => {} },
     {
-      column: "Payment Method",
+      column: 'Payment Method',
       sort: SORT_BY.PAYMENT_METHOD,
       direction: SortDirection.Desc,
       filterHandler: () => handlePaymentSort(direction),
@@ -193,7 +179,10 @@ export const PaymentsList = () => {
 
   return (
     <div className={s.main}>
-      <Input type="search" onChange={handleSearch} />
+      <Input
+        type='search'
+        onChange={handleSearch}
+      />
       <Table>
         <TableHeader>
           <TableRow>
@@ -203,32 +192,28 @@ export const PaymentsList = () => {
                   <span>{col.column}</span>
                   <Button
                     className={clsx([
-                      direction === SortDirection.Asc &&
-                        sort === col.sort &&
-                        s.asc,
-                      direction === SortDirection.Desc &&
-                        sort === col.sort &&
-                        s.desc,
+                      direction === SortDirection.Asc && sort === col.sort && s.asc,
+                      direction === SortDirection.Desc && sort === col.sort && s.desc,
                     ])}
                     onClick={col.filterHandler}
-                    variant="text"
+                    variant='text'
                   >
                     <svg
-                      width="8"
-                      height="12"
-                      viewBox="0 0 8 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                      width='8'
+                      height='12'
+                      viewBox='0 0 8 12'
+                      fill='none'
+                      xmlns='http://www.w3.org/2000/svg'
                     >
                       <path
-                        id="arrowUp"
-                        d="M4 0L7.4641 4.5H0.535898L4 0Z"
-                        fill="#4C4C4C"
+                        id='arrowUp'
+                        d='M4 0L7.4641 4.5H0.535898L4 0Z'
+                        fill='#4C4C4C'
                       />
                       <path
-                        id="arrowDown"
-                        d="M4 12L0.535898 7.5L7.4641 7.5L4 12Z"
-                        fill="#4C4C4C"
+                        id='arrowDown'
+                        d='M4 12L0.535898 7.5L7.4641 7.5L4 12Z'
+                        fill='#4C4C4C'
                       />
                     </svg>
                   </Button>
@@ -237,13 +222,13 @@ export const PaymentsList = () => {
             ))}
           </TableRow>
         </TableHeader>
-        <TableBody style={{ textAlign: "center" }}>
+        <TableBody style={{ textAlign: 'center' }}>
           {loading
             ? [...Array(6)].map((_, index) => (
                 <TableRow key={index}>
                   {[...Array(5)].map((_, index) => (
                     <TableCell key={index}>
-                      <Skeleton style={{ width: "150px", height: "22px" }} />
+                      <Skeleton style={{ width: '150px', height: '22px' }} />
                     </TableCell>
                   ))}
                 </TableRow>
@@ -252,46 +237,37 @@ export const PaymentsList = () => {
                 if (!payment) return null;
                 const formatType = (type: SubscriptionType = payment.type) => {
                   switch (type) {
-                    case "DAY":
-                      return "1 day";
-                    case "WEEKLY":
-                      return "7 days";
+                    case 'DAY':
+                      return '1 day';
+                    case 'WEEKLY':
+                      return '7 days';
                     default:
-                      return "1 month";
+                      return '1 month';
                   }
                 };
-                const paymentMethod = (
-                  type: PaymentMethod = payment.paymentMethod,
-                ) => {
+                const paymentMethod = (type: PaymentMethod = payment.paymentMethod) => {
                   switch (type) {
-                    case "CREDIT_CARD":
-                      return "Credit Card";
-                    case "PAYPAL":
-                      return "PayPal";
+                    case 'CREDIT_CARD':
+                      return 'Credit Card';
+                    case 'PAYPAL':
+                      return 'PayPal';
                     default:
-                      return "Stripe";
+                      return 'Stripe';
                   }
                 };
-                const currency = (
-                  type: CurrencyType | null = payment.currency,
-                ) => {
+                const currency = (type: CurrencyType | null = payment.currency) => {
                   switch (type) {
-                    case "EUR":
-                      return "€";
+                    case 'EUR':
+                      return '€';
                     default:
-                      return "$";
+                      return '$';
                   }
                 };
-                const getAvatarPath = (
-                  paymentAvatars: Avatar[] | null,
-                ): string | undefined => {
-                  if (paymentAvatars && paymentAvatars[0]?.url)
-                    return paymentAvatars[0].url;
+                const getAvatarPath = (paymentAvatars: Avatar[] | null): string | undefined => {
+                  if (paymentAvatars && paymentAvatars[0]?.url) return paymentAvatars[0].url;
                   return undefined;
                 };
-                const createdAt = (
-                  createdAt: string | null,
-                ): string | undefined => {
+                const createdAt = (createdAt: string | null): string | undefined => {
                   if (createdAt) return createdAt;
                   return undefined;
                 };
@@ -300,16 +276,14 @@ export const PaymentsList = () => {
                     <TableCell>
                       <div className={s.userName}>
                         <img
-                          style={{ width: "36px", borderRadius: "50%" }}
+                          style={{ width: '36px', borderRadius: '50%' }}
                           src={getAvatarPath(payment.avatars)}
-                          alt="avatar image"
+                          alt='avatar image'
                         />
                         {payment.userName}
                       </div>
                     </TableCell>
-                    <TableCell>
-                      {formatDate(createdAt(payment.createdAt))}
-                    </TableCell>
+                    <TableCell>{formatDate(createdAt(payment.createdAt))}</TableCell>
                     <TableCell>
                       <span>{payment.amount} </span>
                       <span>{currency()}</span>
