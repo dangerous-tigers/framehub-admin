@@ -15,8 +15,8 @@ importers:
         specifier: ^0.14.4
         version: 0.14.4(@apollo/client@4.1.4(graphql-ws@6.0.7(graphql@16.12.0)(ws@8.19.0))(graphql@16.12.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(rxjs@7.8.2))(@types/react@19.2.14)(graphql@16.12.0)(next@16.1.6(@babel/core@7.29.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.97.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(rxjs@7.8.2)
       '@dangerous-tigers/framehub-ui-kit':
-        specifier: 1.0.6
-        version: 1.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        specifier: 1.0.7
+        version: 1.0.7(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -303,8 +303,8 @@ packages:
     peerDependencies:
       postcss-selector-parser: ^7.1.1
 
-  '@dangerous-tigers/framehub-ui-kit@1.0.6':
-    resolution: {integrity: sha512-qxDO+Zb2gwy6i5T2vOR9RZN5Wa/x5o2GQTu9mddWzmBdkIR6GXxLmepz2PAK+Qlg/U9k0a/P0xxn7mNbsTJIkg==, tarball: https://npm.pkg.github.com/download/@dangerous-tigers/framehub-ui-kit/1.0.6/aaaa600b38d71b06171e60883cd3f95763bf2bc9}
+  '@dangerous-tigers/framehub-ui-kit@1.0.7':
+    resolution: {integrity: sha512-DDhTt0mUEkV8NAoJstZKm/n/zO72N3glfx2DOJxQU/KagL+a95KcPVDntoTQj+BK5UgQ48n9ANA9oS3/XzDVxQ==, tarball: https://npm.pkg.github.com/download/@dangerous-tigers/framehub-ui-kit/1.0.7/5c3142b4e4bf362921bd95e5ee2e3d61bfd79633}
     peerDependencies:
       react: ^18.2.0 || ^19.0.0
       react-dom: ^18.2.0 || ^19.0.0
@@ -4427,7 +4427,7 @@ snapshots:
     dependencies:
       postcss-selector-parser: 7.1.1
 
-  '@dangerous-tigers/framehub-ui-kit@1.0.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
+  '@dangerous-tigers/framehub-ui-kit@1.0.7(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
       '@dnd-kit/core': 6.3.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@dnd-kit/sortable': 10.0.0(@dnd-kit/core@6.3.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)

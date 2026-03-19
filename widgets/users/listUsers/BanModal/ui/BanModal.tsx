@@ -1,6 +1,4 @@
-import type { ChangeEvent } from 'react';
-
-import { Button, Input, Modal, ModalHeaderWithClose } from '@dangerous-tigers/framehub-ui-kit/components';
+import { Button, Input, Modal, ModalHeaderWithClose, Select } from '@dangerous-tigers/framehub-ui-kit/components';
 
 import s from './BanModal.module.scss';
 
@@ -18,7 +16,7 @@ type Props = {
   customReasonValue: string;
   onBanReasonChange: (reason: string) => void;
   onCustomReasonValueChange: (value: string) => void;
-  isLodaing?: boolean;
+  isLoading?: boolean;
   handleBanUser: () => void;
 };
 export function BanModal({
@@ -31,17 +29,25 @@ export function BanModal({
   customReasonValue,
   onBanReasonChange,
   onCustomReasonValueChange,
-  isLodaing = false,
+  isLoading = false,
   handleBanUser,
   className,
   ...props
 }: Props) {
-  const handleReasonSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    onBanReasonChange(e.target.value);
+  const selectOptions = banReasonOptions.map((option) => ({
+    ...option,
+    value: option.label,
+  }));
+
+  const selectValue = banReasonOptions.find((option) => option.value === selectedBanReason)?.label || '';
+
+  const handleReasonSelectChange = (value: string) => {
+    const selectedOption = banReasonOptions.find((option) => option.label === value);
+    onBanReasonChange(selectedOption?.value || '');
   };
 
   const disabledBnt =
-    isLodaing || !userName || !selectedBanReason || (isCustomReasonSelected && !customReasonValue.trim());
+    isLoading || !userName || !selectedBanReason || (isCustomReasonSelected && !customReasonValue.trim());
 
   return (
     <Modal
@@ -62,7 +68,7 @@ export function BanModal({
           Are you sure to ban this user <b>{userName}</b>?
         </p>
 
-        <select
+        {/* <select
           name='ban-reason'
           id='ban-reason'
           value={selectedBanReason}
@@ -76,7 +82,16 @@ export function BanModal({
               {option.label}
             </option>
           ))}
-        </select>
+        </select> */}
+
+        <Select
+          width='100%'
+          options={selectOptions}
+          value={selectValue}
+          disabled={isLoading}
+          variant='default'
+          onValueChange={handleReasonSelectChange}
+        />
 
         {isCustomReasonSelected && (
           <div className={s.input}>

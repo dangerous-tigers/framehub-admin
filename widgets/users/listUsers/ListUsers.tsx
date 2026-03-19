@@ -149,7 +149,7 @@ export const ListUsers = () => {
           onCustomReasonValueChange={setCustomReasonValue}
           banReasonOptions={banReasonOptions}
           selectedBanReason={selectedBanReason}
-          isLodaing={isLoading}
+          isLoading={isLoading}
           handleBanUser={handleBanUserClick}
         />
       )}
