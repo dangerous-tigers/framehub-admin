@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import clsx from 'clsx';
 
-import { Framehublogo } from '@/assets/icons';
+import Framehublogosuperadmin from '@/assets/icons/components/Framehublogosuperadmin';
 
 import s from './logo.module.scss';
 
@@ -18,7 +18,7 @@ export const Logo = (props: PropsLogo) => {
       href=''
       className={clsx(s.logo, className)}
     >
-      <Framehublogo />
+      <Framehublogosuperadmin />
     </Link>
   );
 };
