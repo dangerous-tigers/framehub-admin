@@ -3,3 +3,13 @@
   flex-direction: column;
   gap: 36px;
 }
+
+.banned {
+  display: flex;
+  gap: 12px;
+  padding-left: 24px;
+}
+
+.notBanned {
+  padding-left: 60px;
+}

@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@apollo/client": "^4.1.4",
-    "@apollo/client-integration-nextjs": "^0.14.4",
     "@dangerous-tigers/framehub-ui-kit": "1.0.6",
+    "@apollo/client-integration-nextjs": "^0.14.4",
     "clsx": "^2.1.1",
     "graphql": "^16.12.0",
     "next": "16.1.6",
