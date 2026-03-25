@@ -1,4 +1,4 @@
-import { Follow } from '@/types/__generated__/graphql';
+import { Follow } from '@/generated/graphql';
 
 export type GetFollowingByUser = {
   totalCount: number;

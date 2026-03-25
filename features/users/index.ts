@@ -4,3 +4,5 @@ export { PaginationTable } from './pagination/ui/PaginationTable';
 export { PopoverComponent } from './Popover/ui/Popover';
 export { useSearchParamWithKey } from './Search/model/useSearchParamWithKey';
 export { SearchComponent } from './Search/ui/SearchComponent';
+export type { SortDirection, SortOption, SortPreset } from './sort-users';
+export { SortableHeader, SortDropdown, useSortUsers } from './sort-users';

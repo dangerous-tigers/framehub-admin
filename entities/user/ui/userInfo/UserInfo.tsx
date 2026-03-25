@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
+import { User } from '@/generated/graphql';
 import { formatDate } from '@/shared/lib';
-import { User } from '@/types/__generated__/graphql';
 import { Avatar } from '@dangerous-tigers/framehub-ui-kit/components';
 
 import s from './UserInfo.module.scss';

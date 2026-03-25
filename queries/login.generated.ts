@@ -1,4 +1,4 @@
-import * as Types from '../types/__generated__/graphql';
+import * as Types from "../generated/graphql";
 
 export type LoginAdminMutationVariables = Types.Exact<{
   email: Types.Scalars['String']['input'];

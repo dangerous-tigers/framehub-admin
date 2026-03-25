@@ -3,3 +3,18 @@
   flex-direction: column;
   gap: 36px;
 }
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.banned {
+  display: flex;
+  gap: 12px;
+  padding-left: 24px;
+}
+
+.notBanned {
+  padding-left: 60px;
+}
