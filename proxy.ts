@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 import { AUTH_CONFIG } from '@/shared/config/auth';
 import { ROUTES_CONFIG } from '@/shared/config/routes';
 
-export function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const authCookie = request.cookies.get(AUTH_CONFIG.COOKIE_NAME)?.value;
 
   const isPublicRoute = ROUTES_CONFIG.PUBLIC_ROUTES.some((route) => request.nextUrl.pathname.startsWith(route));
