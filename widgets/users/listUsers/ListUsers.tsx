@@ -4,9 +4,8 @@ import Link from 'next/link';
 import clsx from 'clsx';
 
 import { BAN_USER } from '@/entities/user/api';
-import { useQueryGetListUsers, useSort } from '@/entities/users';
-import { PaginationTable, PopoverComponent } from '@/features/users';
-import { ButtonTableHead } from '@/features/users/buttonTableHead/ButtonTableHead';
+import { useQueryGetListUsers } from '@/entities/users';
+import { PaginationTable, PopoverComponent, SortDropdown, useSortUsers } from '@/features/users';
 import { formatDate } from '@/shared/lib';
 import { useMutation } from '@apollo/client/react';
 import {
@@ -40,6 +39,7 @@ export const ListUsers = () => {
   });
   const { data, error, loading, refetch } = useQueryGetListUsers();
   const [handleBanUser, { loading: isLoading }] = useMutation(BAN_USER);
+  const { sortPreset, handleSortChange } = useSortUsers();
 
   const handleBanUserClick = async () => {
     if (selectedUserForBan.userId === null) {
@@ -63,7 +63,6 @@ export const ListUsers = () => {
   };
 
   const { page, pageSize, pagesCount } = data?.pagination || {};
-  const { handleSort } = useSort();
 
   if (loading && data === undefined) {
     return <div>Loading...</div>;
@@ -75,23 +74,20 @@ export const ListUsers = () => {
 
   return (
     <div className={s.root}>
+      <div className={s.header}>
+        <SortDropdown
+          value={sortPreset}
+          onChange={handleSortChange}
+        />
+      </div>
+
       <Table style={{ marginTop: '1.5rem' }}>
         <TableHeader>
           <TableRow>
             <TableHead>User ID</TableHead>
-            <TableHead>
-              <ButtonTableHead
-                label='Profile link'
-                onClick={() => handleSort('userName')}
-              />
-            </TableHead>
+            <TableHead>Profile link</TableHead>
             <TableHead>Email</TableHead>
-            <TableHead>
-              <ButtonTableHead
-                label='Date added'
-                onClick={() => handleSort('createdAt')}
-              />
-            </TableHead>
+            <TableHead>Date added</TableHead>
             <TableHead></TableHead>
           </TableRow>
         </TableHeader>

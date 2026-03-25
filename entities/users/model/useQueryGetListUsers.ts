@@ -13,7 +13,7 @@ export const useQueryGetListUsers = () => {
   const sortBy = searchParams.get('sortBy') || 'createdAt';
   const sortDirection = searchParams.get('sortDirection') || 'desc';
   const pageNumber = searchParams.get('p') || '1';
-  const pageSize = searchParams.get('ps') || '10';
+  const pageSize = searchParams.get('ps') || '8';
 
   const { loading, error, data, refetch } = useQuery<{ getUsers: UsersPaginationModel }, QueryGetUsersArgs>(
     GET_LIST_USERS,

@@ -4,6 +4,11 @@
   gap: 36px;
 }
 
+.header {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .banned {
   display: flex;
   gap: 12px;
