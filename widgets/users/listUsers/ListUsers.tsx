@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import clsx from 'clsx';
 
-import { BAN_USER } from '@/entities/user/api';
+import { BAN_USER, REMOVE_USER } from '@/entities/user/api';
 import { useQueryGetListUsers, useSort } from '@/entities/users';
 import { PaginationTable, PopoverComponent } from '@/features/users';
 import { ButtonTableHead } from '@/features/users/buttonTableHead/ButtonTableHead';
@@ -20,7 +20,8 @@ import {
 import { Block } from '@dangerous-tigers/framehub-ui-kit/icons';
 
 import { BanModal } from './BanModal/ui';
-import { useBanModalState, useBanReasonSelection } from './model';
+import { DeleteModal } from './DeleteModal/ui';
+import { useBanModalState, useBanReasonSelection, useDeleteModalState } from './model';
 
 import s from './ListUsers.module.scss';
 
@@ -38,8 +39,10 @@ export const ListUsers = () => {
   const { isBanModalOpen, selectedUserForBan, openBanModalForUser, closeBanModal } = useBanModalState({
     resetBanReasonSelection,
   });
+  const { isDeleteModalOpen, selectedUserForDelete, openDeleteModalForUser, closeDeleteModal } = useDeleteModalState();
   const { data, error, loading, refetch } = useQueryGetListUsers();
   const [handleBanUser, { loading: isLoading }] = useMutation(BAN_USER);
+  const [handleDeleteUser, { loading: isDeleteLoading }] = useMutation(REMOVE_USER);
 
   const handleBanUserClick = async () => {
     if (selectedUserForBan.userId === null) {
@@ -60,6 +63,20 @@ export const ListUsers = () => {
     });
     await refetch();
     closeBanModal();
+  };
+
+  const handleDeleteUserClick = async () => {
+    if (selectedUserForDelete.userId === null) {
+      return;
+    }
+
+    await handleDeleteUser({
+      variables: {
+        userId: selectedUserForDelete.userId,
+      },
+    });
+    await refetch();
+    closeDeleteModal();
   };
 
   const { page, pageSize, pagesCount } = data?.pagination || {};
@@ -121,6 +138,12 @@ export const ListUsers = () => {
                 <PopoverComponent
                   isBanned={user.userBan !== null}
                   userId={user.id}
+                  setOpenDeleteModal={() =>
+                    openDeleteModalForUser({
+                      userId: user.id,
+                      userName: user.userName,
+                    })
+                  }
                   setOpenBanModal={() =>
                     openBanModalForUser({
                       userId: user.id,
@@ -151,6 +174,15 @@ export const ListUsers = () => {
           selectedBanReason={selectedBanReason}
           isLoading={isLoading}
           handleBanUser={handleBanUserClick}
+        />
+      )}
+      {isDeleteModalOpen && (
+        <DeleteModal
+          open={isDeleteModalOpen}
+          onOpenChange={closeDeleteModal}
+          userName={selectedUserForDelete.userName || ''}
+          isLoading={isDeleteLoading}
+          handleDeleteUser={handleDeleteUserClick}
         />
       )}
     </div>
