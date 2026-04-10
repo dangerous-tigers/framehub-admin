@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import clsx from 'clsx';
 
-import { BAN_USER, REMOVE_USER } from '@/entities/user/api';
+import { BAN_USER, REMOVE_USER, UNBAN_USER } from '@/entities/user/api';
 import { useQueryGetListUsers, useSort } from '@/entities/users';
 import { PaginationTable, PopoverComponent } from '@/features/users';
 import { ButtonTableHead } from '@/features/users/buttonTableHead/ButtonTableHead';
@@ -22,8 +22,7 @@ import { Block } from '@dangerous-tigers/framehub-ui-kit/icons';
 import { BanModal } from './BanModal/ui';
 import { DeleteModal } from './DeleteModal/ui';
 import { UnbanModal } from './UnbanModal/ui';
-import { useBanModalState, useBanReasonSelection, useUnbanModalState } from './model';
-import { useBanModalState, useBanReasonSelection, useDeleteModalState } from './model';
+import { useBanModalState, useBanReasonSelection, useDeleteModalState, useUnbanModalState } from './model';
 
 import s from './ListUsers.module.scss';
 
@@ -41,10 +40,9 @@ export const ListUsers = () => {
   const { isBanModalOpen, selectedUserForBan, openBanModalForUser, closeBanModal } = useBanModalState({
     resetBanReasonSelection,
   });
-
   const { isUnbanModalOpen, selectedUserForUnban, openUnbanModalForUser, closeUnbanModal } = useUnbanModalState();
-
   const { isDeleteModalOpen, selectedUserForDelete, openDeleteModalForUser, closeDeleteModal } = useDeleteModalState();
+
   const { data, error, loading, refetch } = useQueryGetListUsers();
   const [handleBanUser, { loading: isLoading }] = useMutation(BAN_USER);
   const [handleDeleteUser, { loading: isDeleteLoading }] = useMutation(REMOVE_USER);
@@ -71,7 +69,6 @@ export const ListUsers = () => {
     closeBanModal();
   };
 
-
   const handleUnbanUserClick = async () => {
     if (selectedUserForUnban.userId === null) {
       return;
@@ -84,6 +81,8 @@ export const ListUsers = () => {
     });
     await refetch();
     closeUnbanModal();
+  };
+
   const handleDeleteUserClick = async () => {
     if (selectedUserForDelete.userId === null) {
       return;
@@ -181,11 +180,13 @@ export const ListUsers = () => {
           ))}
         </TableBody>
       </Table>
+
       <PaginationTable
         page={page}
         pageSize={pageSize}
         pageTotal={pagesCount}
       />
+
       {isBanModalOpen && (
         <BanModal
           open={isBanModalOpen}
@@ -209,6 +210,8 @@ export const ListUsers = () => {
           userName={selectedUserForUnban.userName || ''}
           isLoading={isUnbanLoading}
           handleUnbanUser={handleUnbanUserClick}
+        />
+      )}
 
       {isDeleteModalOpen && (
         <DeleteModal
@@ -217,7 +220,6 @@ export const ListUsers = () => {
           userName={selectedUserForDelete.userName || ''}
           isLoading={isDeleteLoading}
           handleDeleteUser={handleDeleteUserClick}
-
         />
       )}
     </div>

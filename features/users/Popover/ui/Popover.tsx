@@ -11,17 +11,18 @@ import s from './Popover.module.scss';
 type Props = {
   isBanned?: boolean;
   userId?: number;
+  setOpenDeleteModal: () => void;
   setOpenBanModal: () => void;
-
   setOpenUnbanModal: () => void;
 };
 
-export const PopoverComponent = ({ isBanned, userId, setOpenBanModal, setOpenUnbanModal }: Props) => {
-  setOpenDeleteModal: () => void;
-};
-
-export const PopoverComponent = ({ isBanned, userId, setOpenBanModal, setOpenDeleteModal }: Props) => {
-  
+export const PopoverComponent = ({
+  isBanned,
+  userId,
+  setOpenDeleteModal,
+  setOpenBanModal,
+  setOpenUnbanModal,
+}: Props) => {
   const onClickDelete = () => {
     setOpenDeleteModal();
   };

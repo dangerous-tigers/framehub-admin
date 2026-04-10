@@ -67,7 +67,7 @@ export function BanModal({
         <p className={s.text}>
           Are you sure to ban this user <b>{userName}</b>?
         </p>
-        
+
         <Select
           width='100%'
           options={selectOptions}

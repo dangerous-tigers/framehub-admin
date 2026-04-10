@@ -28,7 +28,7 @@ export function UserPage({ id }: { id: string }) {
     <div>
       <Back
         label='Back to Users List'
-        path={'/' + ROUTES.USERS}
+        path={ROUTES.DEFAULT_REDIRECT_ROUTE}
         className={s.back}
       />
       <div>
