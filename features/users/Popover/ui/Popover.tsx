@@ -12,9 +12,10 @@ type Props = {
   isBanned?: boolean;
   userId?: number;
   setOpenBanModal: () => void;
+  setOpenUnbanModal: () => void;
 };
 
-export const PopoverComponent = ({ isBanned, userId, setOpenBanModal }: Props) => {
+export const PopoverComponent = ({ isBanned, userId, setOpenBanModal, setOpenUnbanModal }: Props) => {
   const onClickDelete = () => {
     //console.log("delete user with id: ", userId);
   };
@@ -25,7 +26,7 @@ export const PopoverComponent = ({ isBanned, userId, setOpenBanModal }: Props) =
   };
 
   const onClickUnBan = () => {
-    //console.log("un-ban user with id: ", userId);
+    setOpenUnbanModal();
   };
 
   return (
@@ -48,7 +49,7 @@ export const PopoverComponent = ({ isBanned, userId, setOpenBanModal }: Props) =
           {isBanned && (
             <li onClick={onClickUnBan}>
               <Block1 />
-              <span>Un-ban User</span>
+              <span>Un-ban</span>
             </li>
           )}
           <li>

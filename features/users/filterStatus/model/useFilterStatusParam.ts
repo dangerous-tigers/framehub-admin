@@ -7,9 +7,9 @@ import { useSearchParamWithKey } from '@/entities/users/model/searchParams/useSe
 const FILTER_PARAM_KEY = 'fs';
 
 export const FILTER_OPTIONS = [
-  { label: 'notSelected', value: 'Not Selected', param: '' },
+  { label: 'Not selected', value: 'Not Selected', param: '' },
   { label: 'Blocked', value: 'Blocked', param: 'BLOCKED' },
-  { label: 'notBlocked', value: 'Not Blocked', param: 'UNBLOCKED' },
+  { label: 'Not blocked', value: 'Not Blocked', param: 'UNBLOCKED' },
 ];
 
 type FilterOption = (typeof FILTER_OPTIONS)[number];
