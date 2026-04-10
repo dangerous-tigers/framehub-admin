@@ -21,6 +21,8 @@ import { Block } from '@dangerous-tigers/framehub-ui-kit/icons';
 
 import { BanModal } from './BanModal/ui';
 import { DeleteModal } from './DeleteModal/ui';
+import { UnbanModal } from './UnbanModal/ui';
+import { useBanModalState, useBanReasonSelection, useUnbanModalState } from './model';
 import { useBanModalState, useBanReasonSelection, useDeleteModalState } from './model';
 
 import s from './ListUsers.module.scss';
@@ -39,10 +41,14 @@ export const ListUsers = () => {
   const { isBanModalOpen, selectedUserForBan, openBanModalForUser, closeBanModal } = useBanModalState({
     resetBanReasonSelection,
   });
+
+  const { isUnbanModalOpen, selectedUserForUnban, openUnbanModalForUser, closeUnbanModal } = useUnbanModalState();
+
   const { isDeleteModalOpen, selectedUserForDelete, openDeleteModalForUser, closeDeleteModal } = useDeleteModalState();
   const { data, error, loading, refetch } = useQueryGetListUsers();
   const [handleBanUser, { loading: isLoading }] = useMutation(BAN_USER);
   const [handleDeleteUser, { loading: isDeleteLoading }] = useMutation(REMOVE_USER);
+  const [handleUnbanUser, { loading: isUnbanLoading }] = useMutation(UNBAN_USER);
 
   const handleBanUserClick = async () => {
     if (selectedUserForBan.userId === null) {
@@ -65,6 +71,19 @@ export const ListUsers = () => {
     closeBanModal();
   };
 
+
+  const handleUnbanUserClick = async () => {
+    if (selectedUserForUnban.userId === null) {
+      return;
+    }
+
+    await handleUnbanUser({
+      variables: {
+        userId: selectedUserForUnban.userId,
+      },
+    });
+    await refetch();
+    closeUnbanModal();
   const handleDeleteUserClick = async () => {
     if (selectedUserForDelete.userId === null) {
       return;
@@ -150,6 +169,12 @@ export const ListUsers = () => {
                       userName: user.userName,
                     })
                   }
+                  setOpenUnbanModal={() =>
+                    openUnbanModalForUser({
+                      userId: user.id,
+                      userName: user.userName,
+                    })
+                  }
                 />
               </TableCell>
             </TableRow>
@@ -176,6 +201,15 @@ export const ListUsers = () => {
           handleBanUser={handleBanUserClick}
         />
       )}
+
+      {isUnbanModalOpen && (
+        <UnbanModal
+          open={isUnbanModalOpen}
+          onOpenChange={closeUnbanModal}
+          userName={selectedUserForUnban.userName || ''}
+          isLoading={isUnbanLoading}
+          handleUnbanUser={handleUnbanUserClick}
+
       {isDeleteModalOpen && (
         <DeleteModal
           open={isDeleteModalOpen}
@@ -183,6 +217,7 @@ export const ListUsers = () => {
           userName={selectedUserForDelete.userName || ''}
           isLoading={isDeleteLoading}
           handleDeleteUser={handleDeleteUserClick}
+
         />
       )}
     </div>
