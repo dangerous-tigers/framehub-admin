@@ -1,3 +1,5 @@
+import { ViewAllPosts } from '@/features/viewAllPosts';
+
 export default function PostsPage() {
-  return <span>Posts</span>;
+  return <ViewAllPosts />;
 }

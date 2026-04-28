@@ -1,28 +1,18 @@
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> =
-  | T
-  | {
-      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
-    };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string };
-  String: { input: string; output: string };
-  Boolean: { input: boolean; output: boolean };
-  Int: { input: number; output: number };
-  Float: { input: number; output: number };
-  DateTime: { input: any; output: any };
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
+  DateTime: { input: any; output: any; }
 };
 
 export type Avatar = {
@@ -35,7 +25,7 @@ export type Avatar = {
 
 export enum CurrencyType {
   Eur = 'EUR',
-  Usd = 'USD',
+  Usd = 'USD'
 }
 
 export type Follow = {
@@ -80,19 +70,23 @@ export type Mutation = {
   unbanUser: Scalars['Boolean']['output'];
 };
 
+
 export type MutationBanUserArgs = {
   banReason: Scalars['String']['input'];
   userId: Scalars['Int']['input'];
 };
+
 
 export type MutationLoginAdminArgs = {
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
 };
 
+
 export type MutationRemoveUserArgs = {
   userId: Scalars['Int']['input'];
 };
+
 
 export type MutationUnbanUserArgs = {
   userId: Scalars['Int']['input'];
@@ -121,7 +115,7 @@ export type Payment = {
 export enum PaymentMethod {
   CreditCard = 'CREDIT_CARD',
   Paypal = 'PAYPAL',
-  Stripe = 'STRIPE',
+  Stripe = 'STRIPE'
 }
 
 export type PaymentPaginationModel = {
@@ -206,6 +200,7 @@ export type Query = {
   getUsers: UsersPaginationModel;
 };
 
+
 export type QueryGetFollowersArgs = {
   pageNumber?: InputMaybe<Scalars['Int']['input']>;
   pageSize?: InputMaybe<Scalars['Int']['input']>;
@@ -213,6 +208,7 @@ export type QueryGetFollowersArgs = {
   sortDirection?: InputMaybe<SortDirection>;
   userId: Scalars['Int']['input'];
 };
+
 
 export type QueryGetFollowingArgs = {
   pageNumber?: InputMaybe<Scalars['Int']['input']>;
@@ -222,6 +218,7 @@ export type QueryGetFollowingArgs = {
   userId: Scalars['Int']['input'];
 };
 
+
 export type QueryGetPaymentsArgs = {
   pageNumber?: InputMaybe<Scalars['Int']['input']>;
   pageSize?: InputMaybe<Scalars['Int']['input']>;
@@ -229,6 +226,7 @@ export type QueryGetPaymentsArgs = {
   sortBy?: InputMaybe<Scalars['String']['input']>;
   sortDirection?: InputMaybe<SortDirection>;
 };
+
 
 export type QueryGetPaymentsByUserArgs = {
   pageNumber?: InputMaybe<Scalars['Int']['input']>;
@@ -238,6 +236,7 @@ export type QueryGetPaymentsByUserArgs = {
   userId: Scalars['Int']['input'];
 };
 
+
 export type QueryGetPostsArgs = {
   endCursorPostId?: InputMaybe<Scalars['Int']['input']>;
   pageSize?: InputMaybe<Scalars['Int']['input']>;
@@ -246,14 +245,17 @@ export type QueryGetPostsArgs = {
   sortDirection?: InputMaybe<SortDirection>;
 };
 
+
 export type QueryGetPostsByUserArgs = {
   endCursorId?: InputMaybe<Scalars['Int']['input']>;
   userId: Scalars['Int']['input'];
 };
 
+
 export type QueryGetUserArgs = {
   userId: Scalars['Int']['input'];
 };
+
 
 export type QueryGetUsersArgs = {
   pageNumber?: InputMaybe<Scalars['Int']['input']>;
@@ -266,14 +268,14 @@ export type QueryGetUsersArgs = {
 
 export enum SortDirection {
   Asc = 'asc',
-  Desc = 'desc',
+  Desc = 'desc'
 }
 
 export enum StatusSubscriptionType {
   Active = 'ACTIVE',
   Deleted = 'DELETED',
   Finished = 'FINISHED',
-  Pending = 'PENDING',
+  Pending = 'PENDING'
 }
 
 export type Subscription = {
@@ -312,7 +314,7 @@ export type SubscriptionPaymentsModel = {
 export enum SubscriptionType {
   Day = 'DAY',
   Monthly = 'MONTHLY',
-  Weekly = 'WEEKLY',
+  Weekly = 'WEEKLY'
 }
 
 export type User = {
@@ -334,7 +336,7 @@ export type UserBan = {
 export enum UserBlockStatus {
   All = 'ALL',
   Blocked = 'BLOCKED',
-  Unblocked = 'UNBLOCKED',
+  Unblocked = 'UNBLOCKED'
 }
 
 export type UsersPaginationModel = {

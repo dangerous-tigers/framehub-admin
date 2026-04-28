@@ -12,6 +12,7 @@ type OpenBanModalPayload = {
 
 type UseBanModalStateArgs = {
   resetBanReasonSelection: () => void;
+  userId?: number | null;
 };
 
 const getInitialSelectedUserForBan = (): SelectedUserForBan => ({
@@ -19,9 +20,9 @@ const getInitialSelectedUserForBan = (): SelectedUserForBan => ({
   userName: null,
 });
 
-export const useBanModalState = ({ resetBanReasonSelection }: UseBanModalStateArgs) => {
+export const useBanModalState = ({ resetBanReasonSelection, userId }: UseBanModalStateArgs) => {
   const [isBanModalOpen, setIsBanModalOpen] = useState(false);
-  const [selectedUserForBan, setSelectedUserForBan] = useState<SelectedUserForBan>(getInitialSelectedUserForBan());
+  const [selectedUserForBan, setSelectedUserForBan] = useState<any>(userId ?? getInitialSelectedUserForBan());
 
   const openBanModalForUser = ({ userId, userName }: OpenBanModalPayload) => {
     setIsBanModalOpen(true);
