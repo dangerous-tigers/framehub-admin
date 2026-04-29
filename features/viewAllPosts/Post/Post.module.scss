@@ -120,3 +120,9 @@
 }
 
 /* stylelint-enable selector-class-pattern */
+
+.modalText {
+  & > span {
+    font-weight: 700;
+  }
+}

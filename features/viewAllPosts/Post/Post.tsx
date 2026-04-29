@@ -7,9 +7,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { TruncatedDescription } from '@/entities/viewAllPosts';
-import { USER_BAN } from '@/queries/banUser';
-import { USER_UNBAN } from '@/queries/unbanUser';
-import { useMutation } from '@apollo/client/react';
+import { useConfirmStore } from '@/features/viewAllPosts/useConfirmStore';
 import { Avatar, Button } from '@dangerous-tigers/framehub-ui-kit/components';
 import Block from '@dangerous-tigers/framehub-ui-kit/icons/Block';
 
@@ -19,7 +17,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-type Post = {
+export type Post = {
+  id: number;
+  ownerId: number;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
   images: {
     id: number;
     createdAt: string;
@@ -28,11 +31,6 @@ type Post = {
     height: number;
     fileSize: number;
   }[];
-  id: number;
-  ownerId: number;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
   postOwner: {
     id: number;
     userName: string;
@@ -55,26 +53,15 @@ type Props = {
   post: Post;
   expanded?: boolean;
   toggleExpanded: (id: number) => void;
-  refetch: () => void;
+  setPost: (post: Post) => void;
 };
 
-export const Post = ({ post, expanded, toggleExpanded, refetch }: Props) => {
-  const [userBan, { data, loading }] = useMutation(USER_BAN);
-  const [userUnban, { data: userUnbanData, loading: userUnbanLoading }] = useMutation(USER_UNBAN);
+export const Post = ({ post, expanded, toggleExpanded, setPost }: Props) => {
+  const { show } = useConfirmStore();
 
-  const handleUserBan = async (userId: number) => {
-    if (post.userBan === null) {
-      await userBan({
-        variables: {
-          banReason: '123123',
-          userId,
-        },
-      });
-      await refetch();
-    } else {
-      await userUnban({ variables: { userId } });
-      await refetch();
-    }
+  const handleUserBanClick = () => {
+    setPost(post);
+    show();
   };
 
   return (
@@ -110,7 +97,7 @@ export const Post = ({ post, expanded, toggleExpanded, refetch }: Props) => {
       <div className={clsx(s.postInfoTop)}>
         {post.postOwner && (
           <Avatar
-            url={post.postOwner.avatars[0].url}
+            url={post.postOwner.avatars[0]?.url}
             size='s'
             className={clsx(s.postAvatar)}
           />
@@ -120,7 +107,7 @@ export const Post = ({ post, expanded, toggleExpanded, refetch }: Props) => {
         </Link>
         <Button
           className={s.ban}
-          onClick={() => handleUserBan(post.ownerId)}
+          onClick={handleUserBanClick}
         >
           <Block />
         </Button>
