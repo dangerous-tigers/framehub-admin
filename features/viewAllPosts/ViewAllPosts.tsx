@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import clsx from 'clsx';
 
@@ -51,13 +51,10 @@ export const usePaginationQuery = ({
 };
 
 export const ViewAllPosts = () => {
-  const [search, setSearch] = useState('');
   const [post, setPost] = useState<Post>();
   const [expandedPosts, setExpandedPosts] = useState<Record<string, boolean>>({});
   const { open, hide } = useConfirmStore();
   const searchParams = useSearchParams();
-
-  // const debouncedSearch = useDebounce(search, 1000);
 
   const { items, hasMore, cursorRef, refetch } = useGetPostsInfinity({
     pageSize: 12,
@@ -65,8 +62,8 @@ export const ViewAllPosts = () => {
     sortDirection: SortDirection.Asc,
     sortBy: 'createdAt',
   });
-  const [userBan, { loading }] = useMutation(USER_BAN);
-  const [userUnban, { loading: userUnbanLoading }] = useMutation(USER_UNBAN);
+  const [userBan] = useMutation(USER_BAN);
+  const [userUnban] = useMutation(USER_UNBAN);
 
   const {
     banReasonOptions,
@@ -109,10 +106,6 @@ export const ViewAllPosts = () => {
       });
     await refetch();
     hide();
-  };
-
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.currentTarget.value);
   };
 
   if (!items?.length) return null;
