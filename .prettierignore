@@ -1,0 +1,15 @@
+.agents
+.next
+build
+coverage
+dist
+.github
+.husky
+.vscode
+node_modules
+out
+assets/icons/components
+pnpm-lock.yaml
+queries/**/*.generated.ts
+tsconfig.tsbuildinfo
+types/__generated__

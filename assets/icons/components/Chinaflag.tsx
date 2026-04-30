@@ -1,5 +1,5 @@
-import { forwardRef, memo, Ref } from "react";
-import type { SVGProps } from "react";
+import { forwardRef, memo, Ref } from 'react';
+import type { SVGProps } from 'react';
 
 const SvgChinaflag = (
   props: SVGProps<SVGSVGElement>,

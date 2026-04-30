@@ -1,8 +1,8 @@
-"use client";
-import { ReactNode } from "react";
-import { apolloClient } from "shared/lib/apolloClient";
+'use client';
+import { type ReactNode } from 'react';
+import { apolloClient } from 'shared/lib/apolloClient';
 
-import { ApolloProvider } from "@apollo/client/react";
+import { ApolloProvider } from '@apollo/client/react';
 
 export const AppProviders = ({ children }: { children: ReactNode }) => {
   return <ApolloProvider client={apolloClient}>{children}</ApolloProvider>;

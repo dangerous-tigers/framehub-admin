@@ -1,7 +1,7 @@
-"use client";
-import { ReactNode } from "react";
+'use client';
+import { type ReactNode } from 'react';
 
-import { AppShell } from "@/app/ui/AppShell";
+import { AppShell } from '@/app/ui/AppShell';
 
 export default function PrivateLayout({
   children,
