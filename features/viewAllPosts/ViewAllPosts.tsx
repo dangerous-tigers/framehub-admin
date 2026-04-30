@@ -1,6 +1,7 @@
 'use client';
 
 import { ChangeEvent, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import clsx from 'clsx';
 
 import { SortBy } from '@/app/features/payments/model/types';
@@ -12,7 +13,6 @@ import { SortDirection } from '@/generated/graphql';
 import { USER_BAN } from '@/queries/banUser';
 import { GET_ALL_POSTS } from '@/queries/getAllPosts';
 import { USER_UNBAN } from '@/queries/unbanUser';
-import { useDebounce } from '@/shared/lib/hooks';
 import { useBanReasonSelection } from '@/widgets/users/listUsers/model';
 import { useMutation, useQuery } from '@apollo/client/react';
 import { Select } from '@dangerous-tigers/framehub-ui-kit/components';
@@ -55,12 +55,13 @@ export const ViewAllPosts = () => {
   const [post, setPost] = useState<Post>();
   const [expandedPosts, setExpandedPosts] = useState<Record<string, boolean>>({});
   const { open, hide } = useConfirmStore();
+  const searchParams = useSearchParams();
 
-  const debouncedSearch = useDebounce(search, 1000);
+  // const debouncedSearch = useDebounce(search, 1000);
 
   const { items, hasMore, cursorRef, refetch } = useGetPostsInfinity({
     pageSize: 12,
-    searchTerm: debouncedSearch,
+    searchTerm: searchParams.get('s'),
     sortDirection: SortDirection.Asc,
     sortBy: 'createdAt',
   });
@@ -123,25 +124,8 @@ export const ViewAllPosts = () => {
     }));
   };
 
-  if (!items?.length) {
-    return (
-      <div className={s.main}>
-        <Input
-          type='search'
-          value={search}
-          onChange={handleSearch}
-        />
-      </div>
-    );
-  }
-
   return (
     <div className={s.main}>
-      <Input
-        type='search'
-        value={search}
-        onChange={handleSearch}
-      />
       <div className={clsx(s.postsGrid)}>
         {items?.map((post) => {
           return (

@@ -10,7 +10,7 @@ type Params = {
   pageSize: number;
   sortBy: string;
   sortDirection: SortDirection;
-  searchTerm: string;
+  searchTerm: string | null;
 };
 
 export function useGetPostsInfinity({ pageSize, sortBy, sortDirection, searchTerm }: Params) {
