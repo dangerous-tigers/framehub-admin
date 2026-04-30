@@ -1,0 +1,1 @@
+export { ViewAllPosts } from './ViewAllPosts';
